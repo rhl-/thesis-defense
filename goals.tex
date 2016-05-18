@@ -1,0 +1,26 @@
+\begin{frame}
+\frametitle{Efficient Computation}
+\hspace{1in}
+\begin{itemize}
+\item<1->[Problem:] Current algorithms: $O(m^{2.3728639})$ time and $O(m^2)$ space
+\item<2->[Goal:] \only<2-3>{Asymptotically Faster Persistent Homology.}\only<4->{\st{Asymptotically Faster Persistent Homology.}}
+\item<3->[Issue:] Lower bound of $\Omega(m^{2+\epsilon})$  [Edels. \& Parsa '14]
+\item<5->[New Goal:] Efficient Parallel Algorithms?
+\item<6->[Approach:] \begin{enumerate}
+			\item Divide up the input space
+			\item Reconstruct correct answer.
+			\end{enumerate}
+\item<7->[Question:] How do we do that, correctly?
+\end{itemize}
+\only<8>{ \textbf{Answer: Spectral Sequences} }
+\end{frame}
+
+\begin{frame}{The Agenda}
+\begin{itemize}
+\item {\color{gray}{Motivation \& Background}}
+\item \textbf{Preview}
+\item Persistent Homology and a Spectral Sequence
+\item Homology from subcomplexes: Mayer Vietoris 
+\item A distributed persistence algorithm with a soft memory bound.
+\end{itemize}
+\end{frame}

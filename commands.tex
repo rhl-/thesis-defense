@@ -1,0 +1,223 @@
+%\usepackage[all]{xy}
+\usepackage{graphicx,dsfont, amsmath,amssymb}
+
+\usepackage[absolute,overlay]{textpos}
+%\usepackage{subfigure}
+%\usepackage{subcaption}
+\usepackage{rotating}
+\usepackage{cases}
+\usepackage{tikz}
+\usepackage[document]{ragged2e}
+\usepackage[labelformat=empty]{caption}
+\usepackage{pgfplots}
+\usepackage{ifthen}
+\usepackage{etoolbox} % for \ifdefstring
+\usetikzlibrary{patterns}
+\usetikzlibrary{matrix}
+\usetikzlibrary{positioning}
+\usepackage{tikz-cd}
+
+\usepackage{animate}
+\usepackage{ifthen}
+\usepackage{animate}
+\usepgfplotslibrary{external}
+
+\usepackage{amsmath}
+\usepackage{tikz-cd}
+\usetikzlibrary{3d,calc,intersections,patterns,fadings}
+\usepackage{pgfplotstable}
+\usepackage{filecontents}
+\usepackage{lmodern}
+\usetikzlibrary{fit, shadows, arrows, positioning, external, matrix}
+
+%\tikzexternalize[shell escape=-enable-write18, mode=list and make, prefix=tikz/]
+
+\input{colors}
+%\setbeamertemplate{footline}[frame number]
+% \usepackage{beamerthemesplit} // Activate for custom appearance
+%\usepackage{mathspec}
+%\setallmainfonts(Digits,Latin){rhl}
+%\setmainfont{rhl}
+%\setsansfont{rhl}
+
+\makeatletter
+\tikzset{% 
+    complex_triangle/.style={%
+        fill=green
+    }
+}
+\tikzset{
+  beamer externalizing/.style={%
+    execute at end picture={%
+      \tikzifexternalizing{%
+        \ifbeamer@anotherslide
+        \pgfexternalstorecommand{\string\global\string\beamer@anotherslidetrue}%
+        \fi
+      }{}%
+    }%
+  },
+  external/optimize=false
+}
+\makeatother
+\tikzset{every picture/.style={beamer externalizing}}
+%\tikzexternalize[prefix=tikz/]
+
+% defining the new dimensions and parameters
+\newlength{\hatchspread}
+\newlength{\hatchthickness}
+\newlength{\hatchshift}
+\newcommand{\hatchcolor}{}
+% declaring the keys in tikz
+\tikzset{hatchspread/.code={\setlength{\hatchspread}{#1}},
+         hatchthickness/.code={\setlength{\hatchthickness}{#1}},
+         hatchshift/.code={\setlength{\hatchshift}{#1}},% must be >= 0
+         hatchcolor/.code={\renewcommand{\hatchcolor}{#1}}}
+% setting the default values
+\tikzset{hatchspread=3pt,
+         hatchthickness=0.4pt,
+         hatchshift=.1pt,% must be >= 0
+         hatchcolor=gray}
+% declaring the pattern
+\pgfdeclarepatternformonly[\hatchspread,\hatchthickness,\hatchshift,\hatchcolor]% variables
+   {custom north west lines}% name
+   {\pgfqpoint{\dimexpr-2\hatchthickness}{\dimexpr-2\hatchthickness}}% lower left corner
+   {\pgfqpoint{\dimexpr\hatchspread+2\hatchthickness}{\dimexpr\hatchspread+2\hatchthickness}}% upper right corner
+   {\pgfqpoint{\dimexpr\hatchspread}{\dimexpr\hatchspread}}% tile size
+   {% shape description
+    \pgfsetlinewidth{\hatchthickness}
+    \pgfpathmoveto{\pgfqpoint{0pt}{\dimexpr\hatchspread+\hatchshift}}
+    \pgfpathlineto{\pgfqpoint{\dimexpr\hatchspread+0.15pt+\hatchshift}{-0.15pt}}
+    \ifdim \hatchshift > 0pt
+      \pgfpathmoveto{\pgfqpoint{0pt}{\hatchshift}}
+      \pgfpathlineto{\pgfqpoint{\dimexpr0.15pt+\hatchshift}{-0.15pt}}
+    \fi
+    \pgfsetstrokecolor{\hatchcolor}
+%    \pgfsetdash{{1pt}{1pt}}{0pt}% dashing cannot work correctly in all situation this way
+    \pgfusepath{stroke}
+   }
+
+
+\newcommand{\setmath}[2]{\pgfmathparse{#2}\edef#1{\pgfmathresult}}
+
+
+
+%% COMMANDS
+\newcommand*\rot{\rotatebox{90}}
+\newcommand*\rota[1]{\rotatebox{#1}}
+\newcommand{\bigslant}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\mat}[1]{{\mbox{\bf#1}\/}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\B}{\mathbf{B}}
+\newcommand{\C}{\mathbf{C}}
+\newcommand{\s}{\mathbf{s}}
+\renewcommand{\v}[1]{\mathbf{v}_{#1}}
+\renewcommand{\k}{\mathbf{k}}
+\newcommand{\bu}{\mathbf{u}}
+\newcommand{\bv}{\mathbf{v}}
+\newcommand{\bbZ}{\mathds{Z}}
+\newcommand{\bbF}{\mathds{F}}
+\newcommand{\bbR}{\mathds{R}}
+\newcommand{\bbC}{\mathds{C}}
+\newcommand{\bbN}{\mathds{N}}
+\newcommand{\bbQ}{\mathds{Q}}
+\newcommand{\bbzw}{\mathds{Z}[\omega]}
+\newcommand{\bbzi}{\mathds{Z}[i]}
+\newcommand{\bbV}{\mathds{V}}
+\newcommand{\bbS}{\mathds{S}}
+\newcommand{\bbX}{\mathds{X}}
+\newcommand{\bbY}{\mathds{Y}}
+\newcommand{\bbG}{\mathds{G}}
+\newcommand{\bbE}{\mathds{E}}
+
+\newcommand\sep{\mathrm{sep}}
+\newcommand\diam{\mathrm{diam}}
+\newcommand{\beq}[1]{\begin{equation}\label{#1}}
+\newcommand{\eeq}{\end{equation}}
+
+\def\compcirc {\mbox{\hspace{.05cm}}\raisebox{.04cm}{\tiny  {$\circ$ }}}
+
+\newcommand\R{\mathbb{R}}
+\newcommand\N{\mathbb{N}}
+
+
+\newcommand\dmtwo[1]{\left(\begin{smallmatrix}
+0 & {#1}\\
+{#1} & 0
+\end{smallmatrix}\right)}
+\newcommand\dmthree[3]{\left(\begin{smallmatrix}
+0 & {#1}&{#2}\\
+{#1} & 0 & {#3}\\
+{#2} &  {#3}& 0
+\end{smallmatrix}\right)}
+
+\newcommand \cfunc{{\mathfrak C}}
+\newcommand \hfunc{{\mathfrak H}}
+\newcommand \rfunc{{\mathfrak R}}
+\newcommand \func[1]{{\mathfrak #1}}
+\newcommand \fin[1]{\textcolor{gray}{#1}}
+
+\newcommand \tfunc{{\mathfrak T}}
+\newcommand \ifunc{{\mathfrak I}}
+
+\newcommand\ob{\mathrm{ob}}
+\newcommand\mor{\mathrm{Mor}}
+\newcommand\im{\operatorname{Im}}
+\newcommand \iso{\cong}
+\newcommand \miso{\mathcal{M}^{iso}}
+\newcommand \mmon{\mathcal{M}^{inj}}
+\newcommand \mgen{\mathcal{M}^{gen}}
+\newcommand \many{\mathcal{M}}
+\newcommand \catc{\mathcal{C}}
+\newcommand \catp{\mathcal{P}}
+\newcommand \catq{\mathcal{Q}}
+\newcommand \cSets{\underline{Sets}}
+\newcommand \cat[1]{\mathcal{#1}}
+\newcommand \cati{\mathcal{I}}
+\newcommand \catd{\mathcal{D}}
+\newcommand \catr{\mathbb{E}}
+\newcommand \card[1]{\left|{#1}\right|}
+
+\setbeamercolor{framesource}{fg=white}
+\setbeamerfont{framesource}{size=\tiny}
+\newcommand{\source}[1]{\begin{textblock*}{8cm}(4.7cm,7.8cm)
+    \begin{beamercolorbox}[ht=0.5cm,left]{framesource}
+        \usebeamerfont{framesource}\usebeamercolor[fg]{framesource} Source: {#1}
+    \end{beamercolorbox}
+\end{textblock*}}
+
+\pgfdeclarelayer{ball}    % declare background layer
+\pgfdeclarelayer{edge}
+\pgfdeclarelayer{triangle}
+\pgfdeclarelayer{edges}
+\pgfdeclarelayer{quadcell}
+\pgfsetlayers{quadcell,edges,ball,triangle,edge,main}  % set the order of the layers (main is the standard layer)
+\newcommand{\betti}{\beta}
+
+%%%%%%%%%%
+%Afra's Colors
+%%%%%%%%%
+\definecolor{afra}{RGB}{198,168,208}
+\definecolor{afrablue}{RGB}{143,166,215}
+\definecolor{afragreen}{RGB}{182,215,112}
+\definecolor{afrapurple}{RGB}{218,177,239}
+\definecolor{darkgray}{gray}{0.3}
+\definecolor{afrapurplelight}{RGB}{198,168,208}
+\definecolor{afrabluedark}{RGB}{75,113,191}
+\definecolor{afrabluelight}{RGB}{143,166,215}
+\definecolor{afragreendark}{RGB}{154,191,75}
+\definecolor{afragreenlight}{RGB}{182,215,112}
+\definecolor{afrapurpledark}{RGB}{162,75,191}
+
+\definecolor{block}{RGB}{0,162,232}
+
+\def\Put(#1,#2)#3{\leavevmode\makebox(0,0){\put(#1,#2){#3}}}
+%turn off navigation for beamer
+\setbeamertemplate{footline}[frame number]
+\beamertemplatenavigationsymbolsempty
+\usepackage{dynblocks}
+\usepackage{soul}
+
+\graphicspath{{figs/},{figs/speedup-figs/}}
+\input{data} %%annulus data

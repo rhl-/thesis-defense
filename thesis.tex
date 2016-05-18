@@ -1,0 +1,135 @@
+\documentclass{beamer}
+
+% if these lines are commented out, the box draws.
+\input{commands}
+
+\newcommand{\cover}{
+\begin{tikzpicture}[scale=.45, y=0.6pt, x=.75pt]
+     %row 1
+%     \node[font=\large] at (-100, 800) {$(K, U)$};
+     \draw[fill=afragreen, draw = black,  line width=2]  (0,800) circle (10pt);  
+     \draw[fill=afragreen, draw = black, line width=2]  (70,800) circle (10pt);   
+     \draw[fill=afragreen, draw = black, line width=2]  (143,800) circle (10pt); 
+     \draw[fill=afragreen, draw = black, line width=2]  (221,800) circle (10pt); 
+     \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (0,800) -- (70, 800);
+            \path[draw=black,fill=black,line width=2] (70,800) -- (143, 800);
+            \path[draw=black,fill=black,line width=2] (143,800) -- (221, 800);
+      \end{pgfonlayer}      
+      \draw[draw, color=afrablue, fill=none, line join=round,draw opacity=0.978,line width=2] (70, 800) ellipse (100 and 45);
+      \draw[draw, color=afrapurple, fill=none, line join=round,draw opacity=0.978,line width=2] (143, 800) ellipse (100 and 45);
+\end{tikzpicture}
+}
+\newcommand{\disjointunion}{
+\begin{tikzpicture}[scale=.45, y=0.6pt, x=.75pt]
+    %disj 0
+    \begin{scope}[shift={(143,80)}]
+%    \node[font=\large] at (300, 730) {$K^0 \times \Delta^{0}$};
+     \draw[draw, color=afrablue, fill=none, line join=round,draw opacity=0.978,line width=2] (117, 730) ellipse (100 and 45);
+     \draw[fill=afrablue, draw = black, line width=2]  (47,730) circle (10pt);  
+     \draw[fill=afrablue, draw = black, line width=2]  (117,730) circle (10pt);   
+     \draw[fill=afrablue, draw = black, line width=2]  (190,730) circle (10pt); 
+     \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (47,730) -- (117, 730);
+            \path[draw=black,fill=black,line width=2] (117,730) -- (190, 730);
+      \end{pgfonlayer}   
+      \end{scope}
+      %disj  1
+       \begin{scope}[shift={(0,0)}]
+      %   \node[font=\large] at (380, 680) {$K^1 \times \Delta^{1}$};
+       \draw[draw, color=afrapurple, fill=none, line join=round,draw opacity=0.978,line width=2] (190, 680) ellipse (100 and 45);
+     \draw[fill=afrapurple, draw = black, line width=2]  (117,680) circle (10pt);   
+     \draw[fill=afrapurple, draw = black, line width=2]  (190,680) circle (10pt); 
+      \draw[fill=afrapurple, draw = black, line width=2]  (261,680) circle (10pt); 
+         \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (117,680) -- (190, 680);
+            \path[draw=black,fill=black,line width=2] (190,680) -- (261, 680);
+      \end{pgfonlayer}   
+            \end{scope}
+\end{tikzpicture}
+}
+\newcommand{\blowupcomplex}{
+\begin{tikzpicture}[scale=.45, y=0.6pt, x=.75pt]
+    %disj 0
+    \begin{scope}[shift={(143,80)}]
+  %  \node[font=\large] at (300, 730) {$K^0 \times \Delta^{0}$};
+     \draw[draw, color=afrablue, fill=none, line join=round,draw opacity=0.978,line width=2] (117, 730) ellipse (100 and 45);
+     \draw[fill=afrablue, draw = black, line width=2]  (47,730) circle (10pt);  
+     \draw[fill=afrablue, draw = black, line width=2]  (117,730) circle (10pt);   
+     \draw[fill=afrablue, draw = black, line width=2]  (190,730) circle (10pt); 
+     \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (47,730) -- (117, 730);
+            \path[draw=black,fill=black,line width=2] (117,730) -- (190, 730);
+      \end{pgfonlayer}   
+      \end{scope}
+      %disj  1
+       \begin{scope}[shift={(0,0)}]
+   %      \node[font=\large] at (380, 680) {$K^1 \times \Delta^{1}$};
+       \draw[draw, color=afrapurple, fill=none, line join=round,draw opacity=0.978,line width=2] (190, 680) ellipse (100 and 45);
+     \draw[fill=afrapurple, draw = black, line width=2]  (117,680) circle (10pt);   
+     \draw[fill=afrapurple, draw = black, line width=2]  (190,680) circle (10pt); 
+      \draw[fill=afrapurple, draw = black, line width=2]  (261,680) circle (10pt); 
+         \begin{pgfonlayer}{edges}s
+            \path[draw=black,fill=black,line width=2] (117,680) -- (190, 680);
+            \path[draw=black,fill=black,line width=2] (190,680) -- (261, 680);
+      \end{pgfonlayer}   http
+            \end{scope}
+      %blowup edges 
+      \begin{scope}[shift={(143,80)}]
+     \begin{pgfonlayer}{edges}
+            \path[draw=sblack,fill=black,line width=2] (47,730) -- (47, 600);
+            \path[draw=black,fill=black,line width=2] (117,730) -- (117, 600);
+      \end{pgfonlayer}     
+   %       \node[font=\large] at (280, 665) {$K^{[1]} \times \Delta^{[1]}$};
+        \begin{pgfonlayer}{quadcell}
+      \draw [fill=afragreen,  preaction={fill, afragreen}, pattern=north west lines, pattern color=black] (47, 600) rectangle (117, 730);
+	\end{pgfonlayer}
+	\end{scope}
+\end{tikzpicture}
+}
+
+\title{Spectral Sequences for Applied Topology \\ Thesis Defense}
+\author{Ryan H. Lewis \vspace{.5cm} \\ Advisor:  Gunnar Carlsson}
+\date{\today}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+%data and graphics variables
+\input{data} %%annulus data
+\newcommand{\torusc}{10}
+\newcommand{\torusa}{5}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\input{motivation}
+
+\input{goal}
+
+\begin{frame}[fragile]
+\frametitle{persistence}
+\end{frame}
+
+%\begin{frame}
+%\frametitle{parallel homology}
+%\end{frame}
+%
+\begin{frame}
+\frametitle{That's all she wrote!}
+\begin{columns}
+	\begin{column}{.4\textwidth}
+	\begin{figure}
+		\includegraphics[width=\textwidth]{bours_big.jpg}
+		\caption{Lego Bour's Surface: By Andrew Lipson}
+	\end{figure}
+\end{column}
+\begin{column}{.7\textwidth}
+Thank you!  \\
+Code available at: \\
+\url{http://github.com/appliedtopology/ctl}  \\
+\vspace{1cm}
+Lego Art from: \\ 
+\url{http://andrewlipson.com}
+\end{column}
+\end{columns}
+\end{frame}
+\end{document}
