@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="744.09448819"
+   height="1052.3622047"
+   id="svg4725"
+   version="1.1"
+   inkscape:version="0.48.1 r9760"
+   sodipodi:docname="up-leftarrow.svg">
+  <defs
+     id="defs4727">
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4945-06"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4945-0"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4945"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4945-06-8"
+       is_visible="true" />
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect4945-0-2"
+       is_visible="true" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.7"
+     inkscape:cx="375"
+     inkscape:cy="577.14286"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1680"
+     inkscape:window-height="993"
+     inkscape:window-x="0"
+     inkscape:window-y="26"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4730">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:nodetypes="ccaaaacccccsssssc"
+       inkscape:connector-curvature="0"
+       inkscape:original-d="m 123.78207,136.4197 10.11655,-19.58009 c 0,0 -15.29401,-7.0602 -22.28265,-11.57404 C 104.80565,100.8669 98.485876,95.769931 92.658266,90.275069 88.061716,85.940956 83.326122,81.524457 80.13559,76.191996 77.132006,71.171988 75.534287,65.456232 74.200307,59.826778 72.713322,53.551662 71.946849,40.639406 71.946849,40.639406 L 93.995566,38.95945 56.769278,6.5187644 24.84946,43.723925 47.835226,43.401613 c 0,0 0.622601,13.894366 2.254757,20.615581 1.907118,7.853559 4.815428,14.880225 7.357063,22.569044 1.729995,5.233523 6.562141,9.510333 9.907567,13.992692 3.860196,5.17212 8.581133,9.53638 13.486292,13.86073 5.250261,4.62863 10.895331,9.31407 17.639141,11.73799 8.431284,3.03043 25.302024,10.24205 25.302024,10.24205 z"
+       inkscape:path-effect="#path-effect4945-0-2"
+       id="path4943-6"
+       d="m 123.78207,136.4197 10.11655,-19.58009 c -7.81125,-3.05023 -15.29531,-6.93759 -22.28265,-11.57404 C 104.89712,100.80728 98.651717,95.669308 92.658266,90.275069 87.970963,86.056392 83.372376,81.604135 80.13559,76.191996 77.143537,71.189068 75.417025,65.527767 74.200307,59.826778 72.854238,53.519706 72.098718,47.086731 71.946849,40.639406 L 93.995566,38.95945 56.769278,6.5187644 24.84946,43.723925 47.835226,43.401613 c 0.239436,6.915064 0.993791,13.812243 2.254757,20.615581 1.44789,7.811857 3.592834,15.572468 7.357063,22.569044 2.71261,5.041932 6.223688,9.609957 9.907567,13.992692 4.152844,4.94067 8.559786,9.6911 13.486292,13.86073 5.401182,4.57138 11.392513,8.41384 17.639141,11.73799 8.046894,4.28216 16.542244,7.72101 25.302024,10.24205"
+       style="fill:#b6d770;fill-opacity:1;stroke:#000000;stroke-width:4.72060061;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
+       inkscape:transform-center-x="-30"
+       inkscape:transform-center-y="-22.857143" />
+  </g>
+</svg>

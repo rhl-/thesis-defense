@@ -21,7 +21,7 @@
 \usepackage{ifthen}
 \usepackage{animate}
 \usepgfplotslibrary{external}
-
+\usepackage{svg}
 \usepackage{amsmath}
 \usepackage{tikz-cd}
 \usetikzlibrary{3d,calc,intersections,patterns,fadings}
@@ -130,12 +130,40 @@
 \newcommand{\bbY}{\mathds{Y}}
 \newcommand{\bbG}{\mathds{G}}
 \newcommand{\bbE}{\mathds{E}}
-
+\newcommand{\U}{U}
 \newcommand\sep{\mathrm{sep}}
 \newcommand\diam{\mathrm{diam}}
 \newcommand{\beq}[1]{\begin{equation}\label{#1}}
 \newcommand{\eeq}{\end{equation}}
 
+% Erdos-Renyi
+\newcommand{\Erdos}{Erd\H{o}s}
+\newcommand{\Renyi}{R{\'e}nyi}
+\newcommand{\almosta}{a.a.\@}
+
+\renewcommand{\Im}[1]{\operatorname{Im}{#1}}
+\newcommand{\Ker}[1]{\operatorname{Ker}{#1}}
+%\newcommand{\rank}[1]{\operatorname{rank}{#1}}
+\newcommand{\Dim}[1]{\operatorname{dim}{#1}}
+\newcommand{\bd}{\ensuremath{\partial}}
+\DeclareMathOperator{\im}{im}
+\newcommand{\betti}{\ensuremath{\beta}}
+\newcommand \iso{\cong}
+\newcommand \miso{\mathcal{M}^{iso}}
+\newcommand{\tensor}{\otimes}
+\DeclareMathOperator{\rank}{rank}
+\newcommand{\Bd}[1]{\partial_{#1}}
+\newcommand{\Cl}[1]{\operatorname{Cl}{#1}}
+%\newcommand{\bigslant}[2]{{\raisebox{.2em}{$#1$}\left/\raisebox{-.2em}{$#2$}\right.}}
+\newcommand{\card}[1]{|#1|}
+\newcommand{\mv}{Mayer-Vietoris }
+\newcommand{\mvb}{\mv blowup complex }
+\newcommand{\K}{K}
+\renewcommand{\L}{L}
+%\newcommand{\C}{U}
+%\newcommand{\N}{N}
+\newcommand{\factor}{\card{\K^{\C}}/\card{\K}}
+\newcommand{\ratio}{\factor}
 \def\compcirc {\mbox{\hspace{.05cm}}\raisebox{.04cm}{\tiny  {$\circ$ }}}
 
 \newcommand\R{\mathbb{R}}
@@ -163,9 +191,9 @@
 
 \newcommand\ob{\mathrm{ob}}
 \newcommand\mor{\mathrm{Mor}}
-\newcommand\im{\operatorname{Im}}
-\newcommand \iso{\cong}
-\newcommand \miso{\mathcal{M}^{iso}}
+%\newcommand\im{\operatorname{Im}}
+%\newcommand \iso{\cong}
+%\newcommand \miso{\mathcal{M}^{iso}}
 \newcommand \mmon{\mathcal{M}^{inj}}
 \newcommand \mgen{\mathcal{M}^{gen}}
 \newcommand \many{\mathcal{M}}
@@ -177,7 +205,7 @@
 \newcommand \cati{\mathcal{I}}
 \newcommand \catd{\mathcal{D}}
 \newcommand \catr{\mathbb{E}}
-\newcommand \card[1]{\left|{#1}\right|}
+%\newcommand \card[1]{\left|{#1}\right|}
 
 \setbeamercolor{framesource}{fg=white}
 \setbeamerfont{framesource}{size=\tiny}
@@ -192,8 +220,8 @@
 \pgfdeclarelayer{triangle}
 \pgfdeclarelayer{edges}
 \pgfdeclarelayer{quadcell}
-\pgfsetlayers{quadcell,edges,ball,triangle,edge,main}  % set the order of the layers (main is the standard layer)
-\newcommand{\betti}{\beta}
+\pgfsetlayers{quadcell,edges,ball,triangle,edge,main}  % set the order of the layers (main is the standard layer)%
+%\newcommand{\betti}{\beta}
 
 %%%%%%%%%%
 %Afra's Colors
@@ -222,7 +250,9 @@
 \graphicspath{{figs/},{figs/speedup-figs/}}
 \input{data} %%annulus data
 
-
+\usepackage{mathtools}
+\newcommand\SmallMatrix[1]{{%
+  \tiny\arraycolsep=0.5\arraycolsep\ensuremath{\begin{pmatrix}#1\end{pmatrix}}}}
 
 \usepackage{ifthen}
 
@@ -353,3 +383,11 @@
 \newcommand{\bluebox}[1]{ \fblockmatrix     [0.8,0.8,1.0]{.5in}{0.37in}{#1}}
 
 \newcommand{\ssbox[2]}{   \alt<#1>{\greenbox{#2}}{\bluebox{#2}}}
+
+
+\newcommand{\bunny}{{\textsf{B}}}
+\newcommand{\sphere}{\textsf{S}}
+\newcommand{\clique}{\textsf{C}}
+\newcommand{\multiblob}{\textsf{M}}
+\newcommand{\blobs}{\multiblob}
+\newcommand{\gnp}{\textsf{G}}

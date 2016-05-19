@@ -180,11 +180,11 @@ The data on the final page is called the $E^\infty$ page.  \\
 }
 \end{frame}
 \begin{frame}{Remarks}
-\begin{description}
+\begin{itemize}
 \item<1-> Clear connection to persistent homology
 \item<2-> Easy to implement
 \item<3-> \emph{Doesn't load balance well} (lose a useful thread at each step)
 \item<4-> Data on each processor eventually coupled to every other processor.
-\end{description}
+\end{itemize}
 \only<5>{Seek an algorithm which works on large parts of the space in parallel, with small intersections}
 \end{frame}

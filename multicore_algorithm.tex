@@ -1,0 +1,112 @@
+\begin{frame}
+\frametitle{Parallel Algorithm}
+\begin{figure}[t]
+\def\svgwidth{.8\textwidth} 
+\input{images/blowup-persistence.pdf_tex}
+\end{figure}
+\hspace{-.5cm}\textbf{Algorithm:}
+\begin{itemize} 
+	\item<1->[Step 1:] Compute the homology of each local piece (in parallel)
+	\item<2->[Step 2:] Compute the homology with the blowup pieces (in serial)
+\end{itemize}
+\only<3->{
+\hspace{-.5cm} \textbf{Goal:} 
+\begin{itemize}
+	\item Do most of work Step 1, Do as little as possible in Step 2.
+	\item Equivalent to \textit{quickly} generating ``balanced'' and 
+		``minimal'' covers.
+\end{itemize}
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Finding Minimum Blowups}
+\textbf{Goal:} Quickly generate cover, $\U$, with balanced size and ``minimal''
+overlap.  \\
+\vspace{.1cm}
+\pause
+\textbf{Formally:} 
+Given $\alpha \in (\frac{1}{n},1)$ find a covering 
+$\U = \{ \U_1, \ldots, \U_n \}$ minimizing: 
+\[ \frac{\card{K^\U}}{\card{K}} \] \pause 
+subject to:  
+\[ \max_{i\in[n-1]}{\card{\U_{i}}} \leq \alpha \card{K} \] \pause 
+\end{frame}
+
+\begin{frame}
+\frametitle{Finding Minimum Blowups} 
+\textbf{Bad News:}
+\begin{itemize}
+\item<1-> $\frac{\card{K^\U}}{\card{K}}$ is \emph{at worst exponential} in
+	$\card{U}$ 
+\item<2-> We prove finding $\alpha$-balanced Minimal Blowups is
+	$\mathsf{NP}$-Hard.
+\end{itemize}
+\only<3->{\textbf{Good News:}}
+\begin{itemize}
+\item<3-> Any cover gives us correct results. 
+\item<4-> Approximate minimal blowups should still parallelize well.
+\item<5-> We provide a heuristic algorithm with:
+	\only<6-> {
+		\[ \factor < 3 \]
+		guaranteed!
+	}
+\end{itemize}
+\end{frame}
+
+	
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Cover Generation Algorithm}
+\begin{itemize}
+\item \textbf{Input: } Simplicial Complex $K$, and number of cover sets $n$
+\item \textbf{Output:} Covering $\U$ into $n$ cover sets.
+\end{itemize}
+\begin{figure}
+\def\svgwidth{.55\textwidth} 
+\only<1>{\includesvg{images/algorithm_1}
+\caption{Input Complex}}
+
+\only<2>{\includesvg{images/algorithm_2}
+\caption{Extract Graph of complex}}
+
+\only<3>{\includesvg{images/algorithm_3}
+\caption{Find partition of graph's vertex set (minimize edgecut)}}
+
+\only<4>{\includesvg{images/algorithm_4}
+\caption{Find partition (open cover) of complex}}
+
+\only<5>{\includesvg{images/algorithm_5}
+\caption{Close the extra set}}
+
+%\only<6->{\includesvg{images/algorithm_6}
+%\caption{(Optional) Union last set}}
+
+\end{figure}
+\end{frame}
+
+\begin{frame}{Input Datasets}
+\begin{itemize}
+	\item Connected Cliques ({\multiblob}) $46 \times 10^6$ Dim: $10$
+	\item Clique ({\clique}) $1 \times 10^6$ Dim: $19$
+	\item Stanford Bunny ({\bunny}) $9.7 \times 10^6$ Dim: $3$
+	\item Sphere ({\sphere}) $19 \times 10^6$ Dim: $8$
+	\item {\Erdos}-{\Renyi} Random ({\gnp}) $3.6 \times 10^6$ Dim: $4$
+\end{itemize}
+\begin{figure}
+	\includegraphics[width=.25\textwidth]{embedding.png}
+	\hfill
+	\includegraphics[width=.25\textwidth]{bunny-2.pdf}
+	\hfill
+	\includegraphics[width=.25\textwidth]{sphere-2.pdf}
+\caption{Visualizations of {\multiblob}, {\bunny}, {\sphere}}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\input{statistics_plots}
+\end{frame}
+
+\begin{frame}
+\input{ctl_vs_phat}
+\end{frame}
