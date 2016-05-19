@@ -3,6 +3,41 @@
 % if these lines are commented out, the box draws.
 \input{commands}
 
+
+% \mblock[#1](#2,#3)#4(#5,#6)
+% #1:      fill color
+% (#2,#3): lower left corner
+% #4:      text in the middle
+% (#5,#6): size of the block
+\newcommand*{\mblock}[1][block]{%
+  \blockaux{#1}%
+}
+\def\blockaux#1(#2,#3)#4(#5,#6){%
+  \draw[fill={#1}]
+  let \p1=(#2,#3),
+      \p2=(#5,#6),
+      \p3=(#2+#5,#3+#6),
+      \p4=(#2+#5/2,#3+#6/2)
+  in
+    (\p1) rectangle (\p3)
+    (\p4) node {$#4$}
+  ;%
+}
+\newcommand*{\dblock}[1][block]{%
+  \dblockaux{#1}%
+}
+\def\dblockaux#1(#2,#3)#4(#5,#6){%
+  \fill[{#1}, pattern=crosshatch dots]
+  let \p1=(#2,#3),
+      \p2=(#5,#6),
+      \p3=(#2+#5,#3+#6),
+      \p4=(#2+#5/2,#3+#6/2)
+  in
+    (\p1) rectangle (\p3)
+    (\p4) node {$#4$}
+  ;%
+}
+
 \newcommand{\cover}{
 \begin{tikzpicture}[scale=.45, y=0.6pt, x=.75pt]
      %row 1
@@ -100,36 +135,41 @@
 \begin{document}
 
 \frame{\titlepage}
+\begin{frame}{The Agenda}
+Today we will present distributed algorithms for homology and persistent homology, via spectral sequences.
+\begin{minipage}{.65\textwidth}
+\begin{itemize}
+\item {\color{gray}{Motivation}}
+\item \textbf{Background}
+\item Persistent Homology and a Spectral Sequence
+\item Homology from subcomplexes: Mayer Vietoris 
+\item A distributed persistence algorithm
+\end{itemize}
+\end{minipage}
+\end{frame}
+
 
 \input{motivation}
-
-\input{goal}
-
-\begin{frame}[fragile]
-\frametitle{persistence}
-\end{frame}
-
+\input{background}
+\input{spectral_sequence_filtration}
+\input{distributed_mv}
 %\begin{frame}
-%\frametitle{parallel homology}
+%\frametitle{That's all she wrote!}
+%\begin{columns}
+%	\begin{column}{.4\textwidth}
+%	\begin{figure}
+%		\includegraphics[width=\textwidth]{bours_big.jpg}
+%		\caption{Lego Bour's Surface: By Andrew Lipson}
+%	\end{figure}
+%\end{column}
+%\begin{column}{.7\textwidth}
+%Thank you!  \\
+%Code available at: \\
+%\url{http://github.com/appliedtopology/ctl}  \\
+%\vspace{1cm}
+%Lego Art from: \\ 
+%\url{http://andrewlipson.com}
+%\end{column}
+%\end{columns}
 %\end{frame}
-%
-\begin{frame}
-\frametitle{That's all she wrote!}
-\begin{columns}
-	\begin{column}{.4\textwidth}
-	\begin{figure}
-		\includegraphics[width=\textwidth]{bours_big.jpg}
-		\caption{Lego Bour's Surface: By Andrew Lipson}
-	\end{figure}
-\end{column}
-\begin{column}{.7\textwidth}
-Thank you!  \\
-Code available at: \\
-\url{http://github.com/appliedtopology/ctl}  \\
-\vspace{1cm}
-Lego Art from: \\ 
-\url{http://andrewlipson.com}
-\end{column}
-\end{columns}
-\end{frame}
 \end{document}

@@ -1,0 +1,310 @@
+
+\begin{frame}
+\frametitle{A model space}
+\begin{minipage}{.46\columnwidth}
+     For a dataset $X$ we study the topology of the \emph{union of balls} 
+     \[ M_{\epsilon} = \bigcup_{x \in X} B_{\epsilon}(x) \]
+     \only<4->{\textbf{Two Issues:}}
+     \setlength{\itemindent}{-3em}
+     \begin{description}[\itemindent=0pt]
+     \item<4->[\textbf{Scale:}] No natural choice of $\epsilon$! 
+     \item<5->[\textbf{Conception:}] How to encode $M_\epsilon$ on computer?
+    \end{description}
+    \only<6->{\textbf{Answer:} Topology}
+    \end{minipage}     
+\begin{minipage}{0.55\columnwidth}
+\hspace{1cm}
+\begin{tikzpicture}[scale=.5]
+\only<1>{    \node[draw=none, fill=white] at (0, -5.5) {$r = 0$};}
+\only<2-4>{    \node[draw=none, fill=white] at (0, -5.5) {$r = .8$};}
+\only<5>{    \node[draw=none, fill=white] at (0, -5.5) {$r = .2$};}
+\only<6>{    \node[draw=none, fill=white] at (0, -7.5) {$r = \infty$};}
+\only<7>{    \node[draw=none, fill=white] at (0, -7.5) {$r = .6$};}
+    \foreach[count=\p] \x / \y in \data {
+\only<2-4>{	\begin{pgfonlayer}{ball}
+        \fill[gray!50,radius= .8 cm] (\x,\y) circle{};
+        \end{pgfonlayer}{ball}
+        }
+      \only<5>{	\begin{pgfonlayer}{ball}
+        \fill[gray!50,radius= .2 cm] (\x,\y) circle{};
+        \end{pgfonlayer}{ball}
+        }
+        \only<6>{	\begin{pgfonlayer}{ball}
+        \fill[gray!50,radius= 2.4 cm] (\x,\y) circle{};
+        \end{pgfonlayer}{ball}
+        }
+        \only<7>{	\begin{pgfonlayer}{ball}
+        \fill[gray!50,radius= .6 cm] (\x,\y) circle{};
+        \end{pgfonlayer}{ball}
+        }
+	\node[draw, circle, scale=.25, fill=white](\p) at (\x, \y) {};
+    } 
+\end{tikzpicture}
+\end{minipage}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Simplicial Complexes}
+\begin{figure}
+\centering
+  \includegraphics[width=.6\textwidth]{simplicial}
+ \caption{(left) an example \phantom{2000}  (right) a non example}
+\end{figure}
+For a vertex set $V$ a simplicial complex $K \subseteq 2^V$ satisfying:
+\begin{enumerate}
+\item $\{ v \} \in K$ for each $v \in V$
+\item if $\tau \subseteq \sigma \in K$  then $\tau \in K$. 
+\item if $\sigma$ is a $k$-simplex if $\card{\sigma} = k+1$ 
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Simplicial Complexes}
+\centering
+\begin{minipage}{0.45\columnwidth}%
+\begin{tikzpicture}[scale=.5]
+	\node[draw=none, fill=white] at (0, -5.5) {$\check{C}_{.6}$};
+    \foreach[count=\p] \x / \y in \data {
+	\begin{pgfonlayer}{ball}
+        \fill[gray!50,radius= .6 cm] (\x,\y) circle{};
+        \end{pgfonlayer}{ball}
+	\node[draw, circle, scale=.25, fill=white](\p) at (\x, \y) {};
+    } 
+
+\input{cell_5_nerve}
+ \end{tikzpicture}
+\end{minipage}%
+\begin{minipage}{0.55\columnwidth}%
+The $\check{C}$ech complex $\check{C}_{\epsilon}$ encodes the intersection pattern
+of $M_{\epsilon}$:
+\only<2->{Encode:} 
+\begin{description}
+\item<2->Points as \emph{vertices} (0-cells)
+\item<3->Pairwise intersections as \emph{edges} (1-cells)
+\item<4->Threeway intersections as \emph{triangles} (2-cells)
+\item<5->$k$-way intersections as \emph{(k+1)-cells}
+\end{description}
+\end{minipage}
+\only<6->{
+\begin{lemma}[Nerve Lemma, Leray '45]
+$\check{C}_\epsilon$ is topologically equivalent to $M_\epsilon$.
+\end{lemma}
+}
+\only<7->{
+\begin{proof}
+Continuously deform the $M_\epsilon$ onto $\C_\epsilon$.
+\end{proof}
+}
+\end{frame}
+
+\begin{frame}
+\frametitle{Which $\epsilon$? Don't settle for parameter choices}
+\begin{minipage}{0.45\columnwidth}%
+\begin{tikzpicture}[scale=.5]
+ \node[draw=none, fill=white] at (0, -5.5) {$\check{C}_{.6}$};
+    \foreach[count=\p] \x / \y in \data {
+	\begin{pgfonlayer}{ball}
+        \fill[gray!50,radius= .6 cm] (\x,\y) circle{};
+        \end{pgfonlayer}{ball}
+	\node[draw, circle, scale=.25, fill=white](\p) at (\x, \y) {};
+    } 
+ \input{cell_5}
+ \draw[red, very thick] (102) -- (4) -- (85) -- (33) -- (46) -- (102) ;
+ \draw[red, very thick] (58) -- (97) -- (91) -- (21) -- (100) -- (58) ;
+ \draw[yellow, very thick] (34) -- (60) -- (47) -- (2) -- (97) -- (91) -- (94) -- (40) -- (77) -- (82) -- (45) -- (102) -- (4) -- (22) -- (17) -- (79) -- (48) -- (87) -- (66) -- (34) -- (60);
+ \end{tikzpicture}
+\end{minipage}%
+\hfill
+\begin{minipage}{0.55\columnwidth}%
+\begin{tikzpicture}[scale=.5]
+ \node[draw=none, fill=white] at (0, -5.5) {$\check{C}_{.7}$};
+    \foreach[count=\p] \x / \y in \data {
+	\begin{pgfonlayer}{ball}
+        \fill[gray!50,radius= .7 cm] (\x,\y) circle{};
+        \end{pgfonlayer}{ball}
+	\node[draw, circle, scale=.25, fill=white](\p) at (\x, \y) {};
+    } 
+ \input{cell_7}
+  \draw[yellow, very thick] (34) -- (60) -- (47) -- (2) -- (97) -- (91) -- (94) -- (40) -- (77) -- (82) -- (45) -- (102) -- (4) -- (22) -- (17) -- (79) -- (48) -- (87) -- (66) -- (34) -- (60);
+ \end{tikzpicture}
+\end{minipage}
+Functorality allows us to systematically track connectivity between scale!
+\end{frame}
+
+\begin{frame}
+\frametitle{The Persistence Pipeline}
+\noindent Build a sequence of growing spaces from a point sample.
+\begin{figure}[h!]
+\includegraphics[width=\textwidth]{filtration}
+\end{figure}
+\noindent Compute how homology changes as we grow a space. 
+\begin{figure}[h!]
+\includegraphics[width=\textwidth]{barcodes}
+\end{figure}
+Results are captured by a \emph{persistence diagram}
+\vfill
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Defining Homology}
+\begin{figure}
+\centering
+\begin{tikzpicture}[scale=.33, every node/.style={scale=0.33}]
+ \begin{axis} [axis lines=none,view={0}{60}]
+            \addplot3 [surf,
+                 draw=white,
+                 fill=afragreen,
+                shader=flat,
+                domain = 0: 360, 
+                 y domain = 0: 360, 
+                 samples = 10, 
+                  z buffer = sort, ultra thick]
+            ( { (10+5*cos(x))*cos(y) } , 
+             { (10+5*cos(x))*sin(y) } , 
+             { 5*sin(x) } );
+ \end{axis}
+\node[scale=2] at (3,0) {$C_2$ vector space of faces}; 
+\node[scale=5] at (9,4.5) {$\partial_2$};
+ \begin{scope}[scale=.05, shift={(145,35)}]
+  \path[draw=black,fill=afragreen, line width=2pt] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
+  \end{scope}
+  \node[scale=2] at (16,0) {$C_1$ vector space of edges}; 
+\begin{scope}[shift={(13,0)}]
+ \begin{axis} [axis lines=none,view={0}{60}]
+            \addplot3 [surf,
+                 draw=afragreen,
+                 fill=white,
+                shader=flat,
+                domain = 0: 360, 
+                 y domain = 0: 360, 
+                 samples = 10, 
+                  z buffer = sort, ultra thick]
+            ( { (10+5*cos(x))*cos(y) } , 
+             { (10+5*cos(x))*sin(y) } , 
+             { 5*sin(x) } );
+ \end{axis}
+ \end{scope}
+ \node[scale=2] at (29,0) {$C_0$ vector space of vertices}; 
+\node[scale=5] at (22,4.5) {$\partial_1$};
+ \begin{scope}[scale=.05, shift={(405,35)}]
+  \path[draw=black,fill=afragreen, line width=2pt] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
+  \end{scope}
+ \begin{scope}[shift={(26,0)}]
+ \begin{axis} [axis lines=none,view={0}{60}]
+            \addplot3 [surf,
+                 draw=white,
+                 fill=white,
+                shader=flat,
+                domain = 0: 360, 
+                 y domain = 0: 360, 
+                 samples = 10, 
+                 mark=*, mark options={solid, color=afragreen},  z buffer = sort, ultra thick]
+            ( { (10+5*cos(x))*cos(y) } , 
+             { (10+5*cos(x))*sin(y) } , 
+             { 5*sin(x) } );
+ \end{axis}
+ \end{scope}
+ \end{tikzpicture}
+ \vfill
+ Take the linear extension of the boundary operator:
+\[ \partial_d([v_0, \ldots v_d]) = \sum_{i=0}^d (-1)^i [v_0 \ldots, \hat{v}_i, \ldots v_d] \]
+\begin{description}
+\item[Lemma: \phantom{6}]<3-> $\partial_{d-1} \circ \partial_{d} \equiv 0 \Rightarrow \im{ \partial_{d}} \subseteq \ker{\partial_{d-1}}$
+\item[Definition:]<4-> $ H_d(K) = \ker{\partial_d} / \im{ \partial_{d+1}} $
+\end{description}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Homology}
+\begin{figure}
+\begin{tikzpicture}[scale=.75]
+ \begin{axis} [axis lines=none,view={0}{60}]
+            \addplot3 [surf,
+                 draw=gray,
+                 fill=afragreen,
+                shader=flat,
+                domain = 0: 360, 
+                 y domain = 0: 360, 
+                 samples = 40, 
+                  z buffer = sort]
+            ( { (\torusc+\torusa*cos(x))*cos(y) } , 
+             { (\torusc+\torusa*cos(x))*sin(y) } , 
+             { \torusa*sin(x) } );
+
+%%horizontal generator
+ \addplot3 [
+     draw=blue,
+     samples=40,
+     domain=0:-180,
+     ultra thick
+    ] (
+              {(\torusc + \torusa*cos(0))*cos(y)},
+              {(\torusc + \torusa*cos(0))*sin(y)},
+              {\torusa*sin(0)});
+ %horizontal generator dashed         
+\addplot3 [
+     draw=blue,
+     opacity=.5,
+     samples=40,
+     domain=-180:-360,
+     ultra thick, dashed
+    ] (
+              {(\torusc + \torusa*cos(0))*cos(y)},
+              {(\torusc + \torusa*cos(0))*sin(y)},
+              {\torusa*sin(0)});
+                          
+        %vertical generator         
+    \addplot3 [
+      draw=red,
+      samples=40,
+      samples y=1,
+      domain= 0:170,
+      ultra thick
+    ] (
+              {\torusc + \torusa*cos(x)},
+              {0},
+              {\torusa*sin(x)});
+      %vertical generator dashed           
+    \addplot3 [
+      draw=red,
+      samples=40,
+           opacity=.5,
+      samples y=1,
+      domain= 170:360,
+      ultra thick, dashed
+    ] (
+              {\torusc + \torusa*cos(x)},
+              {0},
+              {\torusa*sin(x)});
+ \end{axis}
+\end{tikzpicture}
+\caption{Homology of the torus $T^1$}
+\end{figure}
+Homology is a module (vector space over a ring)
+\begin{center}
+\begin{description}
+\item<1->[$\betti_0 = \dim{H_0(T^1)}$] = 1 connected component
+\item<2->[$\betti_1 = \dim{H_1(T^1)}$] = 2 loops around the donut hole.
+\item<3->[$\betti_2 = \dim{H_2(T^1)}$] = 1 void (useful for jelly filling).
+\end{description}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Persistent Homology is the Homology of Maps}
+\vspace{-1cm}
+\begin{figure}
+\includegraphics{filtration.pdf} \\
+\only<4->{\includegraphics[height=80pt, width=400pt]{barcodes.pdf}}
+    \end{figure}
+\only<1-3>{\[ H_d(\check{C}_*) = \bigoplus_{\epsilon} H_d(\check{C}_{\epsilon}) \]}
+\only<2-3>{
+Carlsson and Zomorodian show us that when using field coefficients there is a structure theorem!
+}
+\only<3->{
+\[ H_d(\check{C}_*) = \left( \bigoplus_{\alpha} t^{\alpha}k[t]\right) \bigoplus \left( \bigoplus_{[\alpha, \beta)} t^{\alpha}k[t]/t^\beta \right) \]
+}
+\only<4>{
+\textbf{Next:} Explain factorization and a parallel persistence algorithm.
+}
+\end{frame}

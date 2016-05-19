@@ -4,11 +4,12 @@
 \begin{minipage}{0.45\columnwidth}%
 \begin{tikzpicture}[scale=.5]
     \foreach[count=\p] \x / \y in \data {
-    \only<3->{
-	\begin{pgfonlayer}{ball}
-        \fill[gray!50,radius= .8 cm] (\x,\y) circle{};
-        \end{pgfonlayer}{ball}
-        }
+\only<4->{
+\begin{pgfonlayer}{ball}
+      \filldraw[draw=none,fill=gray] (0,0) circle [radius=4];
+      \filldraw[draw=none,fill=white] (0,0) circle [radius=2.2];
+      \end{pgfonlayer}{ball}
+      }
 	\node[draw, circle, scale=.25, fill=white](\p) at (\x, \y) {};
     } 
  \end{tikzpicture}
@@ -25,6 +26,39 @@
 \end{enumerate}
 \only<3->{Applied topology about recovering shape from [geometric] data}
 \end{frame}
+
+\begin{frame}
+\frametitle{Data Has Shape}
+\begin{minipage}{0.45\columnwidth}%
+\begin{tikzpicture}[scale=.5]
+\begin{pgfonlayer}{ball}
+      \filldraw[draw=none,fill=gray] (0,0) circle [radius=4];
+      \filldraw[draw=none,fill=white] (0,0) circle [radius=2.2];
+      \end{pgfonlayer}{ball}
+\foreach \x / \y in \data {
+	\node[draw, circle, scale=.25, fill=white] at (\x, \y) {};
+	}
+\end{tikzpicture}
+\end{minipage}%
+\begin{minipage}{0.55\columnwidth}%
+\begin{description} 
+\setlength{\itemindent}{-2.5em}
+\item<2->   2-dimensional 
+\item<3->   Approximates annulus
+\end{description}
+\only<5-> {Topological features of annulus:}
+\setlength{\itemindent}{-3em}
+\begin{description}
+\item<6-> 1 component
+\item<7-> 1 loop 
+\end{description}
+
+\end{minipage}
+\begin{description}
+\item<8->[\textbf{Goal:}] Recover \emph{topology} of annulus from point cloud
+\end{description}
+\end{frame}
+
 \begin{frame}
   \frametitle{Wherefore topology? }
   \begin{minipage}{.45\textwidth}
@@ -68,30 +102,26 @@
     \vfill
 \end{frame}
 
-\begin{frame}
-\frametitle{Persistent Homology}
-TODO: Study how shape changes over scale
-\end{frame}
-
 \begin{frame}{Applications of Persistent Homology}
 \begin{center}
+\begin{figure}
 \includegraphics[height=2cm]{persistence_and_materials}
-%\caption{Materials Science: of $Si02$ in different amorphous states. Hiraoka}
+\caption{$Si02$ in different states has different P.H. Credit: Hiraoka}
+\end{figure}
 \end{center}
 \begin{minipage}{.43\textwidth}
+\begin{figure}
 \includegraphics[height=2cm]{complex_on_brains}
-%\caption{Brains! Credit: Chung}
-%\source{Chung}
+\caption{Neuroscience. Credit: Chung}
+\end{figure}
 \end{minipage}
 \begin{minipage}{.43\textwidth}
 \hfill
+\begin{figure}
 \includegraphics[height=2cm]{sensors}
-%\caption{Sensor Networks}
-%\source{Ghrist}
+\caption{Sensor Networks}
+\end{figure}
+\vfill
+\vspace{.5cm}
 \end{minipage}
-\pause
-\begin{center}
-\textbf{Efficient Algorithms Enable Applications}
-\end{center}
 \end{frame}
-
