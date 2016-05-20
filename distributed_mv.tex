@@ -1,199 +1,460 @@
-%\begin{frame}[fragile]{Mayer Vietoris}
-%\begin{figure}
-%\begin{tikzpicture}[scale=.5, y=0.6pt, x=.75pt]
-%     %row 1
-%%     \node[font=\large] at (-50, 800) {$(K, U)$};
-%     \draw[fill=afragreen, draw = black,  line width=2]  (47,800) circle (10pt);  
-%     \draw[fill=afragreen, draw = black, line width=2]  (117,800) circle (10pt);   
-%     \draw[fill=afragreen, draw = black, line width=2]  (190,800) circle (10pt); 
-%     \draw[fill=afragreen, draw = black, line width=2]  (261,800) circle (10pt); 
-%     \begin{pgfonlayer}{edges}
-%            \path[draw=black,fill=black,line width=2] (47,800) -- (117, 800);
-%            \path[draw=black,fill=black,line width=2] (117,800) -- (190, 800);
-%            \path[draw=black,fill=black,line width=2] (190,800) -- (261, 800);
-%      \end{pgfonlayer}      
-%      \draw[draw, color=afrablue, fill=none, line join=round,draw opacity=0.978,line width=2] (117, 800) ellipse (100 and 45) node[anchor=north, xshift=-.55in] {$U_0$};
-%      \draw[draw, color=afrapurple, fill=none, line join=round,draw opacity=0.978,line width=2] (190, 800) ellipse (100 and 45) node[anchor=north, xshift=.6in] {$U_1$};
-%    \end{tikzpicture}
-%\caption{Space and Cover}
-%\label{fig:space-n-cover}
-%\end{figure}
-%
-%When we have a pair of sets there is another short exact sequence:
-%\begin{tikzcd}
-% C_*(U_0 \cap U_1) \hspace{1mm} \arrow{r}{x \mapsto (x,x)} & C_*(U_0) \bigoplus C_*(U_1) \hspace{1mm} \arrow{r}{ (x,y) \mapsto x-y} & \hspace{1mm} C_*(U_0 \bigcup U_1) = C_*(X) \\
-% \end{tikzcd}
-%When you have intersections of 3 or more sets, this becomes the mayer vietoris spectral sequence, with the following initial data:
-%\[ E^0_{p,q} = \langle p\text{-chains in a }q\textrm{-way intersection} \rangle \]
-%\pause
-%We will come back to this. For now, lets take advantage of this covering.
-%\end{frame}
+\begin{frame}[fragile]{Mayer Vietoris}
+\begin{figure}
+\begin{tikzpicture}[scale=.5, y=0.6pt, x=.75pt]
+     %row 1
+%     \node[font=\large] at (-50, 800) {$(K, U)$};
+     \draw[fill=afragreen, draw = black,  line width=2]  (47,800) circle (10pt);  
+     \draw[fill=afragreen, draw = black, line width=2]  (117,800) circle (10pt);   
+     \draw[fill=afragreen, draw = black, line width=2]  (190,800) circle (10pt); 
+     \draw[fill=afragreen, draw = black, line width=2]  (261,800) circle (10pt); 
+     \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (47,800) -- (117, 800);
+            \path[draw=black,fill=black,line width=2] (117,800) -- (190, 800);
+            \path[draw=black,fill=black,line width=2] (190,800) -- (261, 800);
+      \end{pgfonlayer}      
+      \draw[draw, color=afrablue, fill=none, line join=round,draw opacity=0.978,line width=2] (117, 800) ellipse (100 and 45) node[anchor=north, xshift=-.55in] {$U_0$};
+      \draw[draw, color=afrapurple, fill=none, line join=round,draw opacity=0.978,line width=2] (190, 800) ellipse (100 and 45) node[anchor=north, xshift=.6in] {$U_1$};
+    \end{tikzpicture}
+\caption{Space and Cover}
+\label{fig:space-n-cover}
+\end{figure}
 
-%\begin{frame}[fragile]
-%\frametitle{Compute homology via subcomplexes}
-%\begin{minipage}{.35\textwidth}
-%\begin{tikzpicture}[scale=.5, y=0.6pt, x=.75pt]
-%     %row 1
-%%     \node[font=\large] at (-50, 800) {$(K, U)$};
-%     \draw[fill=afragreen, draw = black,  line width=2]  (47,800) circle (10pt);  
-%     \draw[fill=afragreen, draw = black, line width=2]  (117,800) circle (10pt);   
-%     \draw[fill=afragreen, draw = black, line width=2]  (190,800) circle (10pt); 
-%     \draw[fill=afragreen, draw = black, line width=2]  (261,800) circle (10pt); 
-%     \begin{pgfonlayer}{edges}
-%            \path[draw=black,fill=black,line width=2] (47,800) -- (117, 800);
-%            \path[draw=black,fill=black,line width=2] (117,800) -- (190, 800);
-%            \path[draw=black,fill=black,line width=2] (190,800) -- (261, 800);
-%      \end{pgfonlayer}      
-%      \draw[draw, color=afrablue, fill=none, line join=round,draw opacity=0.978,line width=2] (117, 800) ellipse (100 and 45) node[anchor=north, xshift=-.55in] {$U_0$};
-%      \draw[draw, color=afrapurple, fill=none, line join=round,draw opacity=0.978,line width=2] (190, 800) ellipse (100 and 45) node[anchor=north, xshift=.6in] {$U_1$};
-%    \end{tikzpicture}
-%Space and Cover
-%\end{minipage}
-%\begin{minipage}{.2\textwidth}
-%\begin{tikzpicture}[y=1.0pt, x=0.8pt, yscale=-1, scale=.5]
-%      \path[draw=black,fill=afragreen, line width=3pt,transform canvas={xshift = 1cm}] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
-%\end{tikzpicture}
-%\vspace*{1cm}
-%\end{minipage}
-%\begin{minipage}{.4\textwidth}
-%\begin{tikzpicture}[scale=.5, y=0.6pt, x=.75pt]
-%    %disj 0
-%    \begin{scope}[shift={(143,80)}]
-%    \node[font=\large] at (300, 730) {$K^0 \times \Delta^{0}$};
-%     \draw[draw, color=afrablue, fill=none, line join=round,draw opacity=0.978,line width=2] (117, 730) ellipse (100 and 45);
-%     \draw[fill=afrablue, draw = black, line width=2]  (47,730) circle (10pt);  
-%     \draw[fill=afrablue, draw = black, line width=2]  (117,730) circle (10pt);   
-%     \draw[fill=afrablue, draw = black, line width=2]  (190,730) circle (10pt); 
-%     \begin{pgfonlayer}{edges}
-%            \path[draw=black,fill=black,line width=2] (47,730) -- (117, 730);
-%            \path[draw=black,fill=black,line width=2] (117,730) -- (190, 730);
-%      \end{pgfonlayer}   
-%      \end{scope}
-%      %disj  1
-%       \begin{scope}[shift={(0,0)}]
-%        \node[font=\large] at (380, 680) {$K^1 \times \Delta^{1}$};
-%       \draw[draw, color=afrapurple, fill=none, line join=round,draw opacity=0.978,line width=2] (190, 680) ellipse (100 and 45);
-%     \draw[fill=afrapurple, draw = black, line width=2]  (117,680) circle (10pt);   
-%     \draw[fill=afrapurple, draw = black, line width=2]  (190,680) circle (10pt); 
-%      \draw[fill=afrapurple, draw = black, line width=2]  (261,680) circle (10pt); 
-%         \begin{pgfonlayer}{edges}
-%            \path[draw=black,fill=black,line width=2] (117,680) -- (190, 680);
-%            \path[draw=black,fill=black,line width=2] (190,680) -- (261, 680);
-%      \end{pgfonlayer}   
-%            \end{scope}
-%      %blowup edges 
-%      \begin{scope}[shift={(143,80)}]
-%     \begin{pgfonlayer}{edges}
-%            \path[draw=black,fill=black,line width=2] (47,730) -- (47, 600);
-%            \path[draw=black,fill=black,line width=2] (117,730) -- (117, 600);
-%      \end{pgfonlayer}     
-%          \node[font=\large] at (280, 665) {$K^{[1]} \times \Delta^{[1]}$};
-%        \begin{pgfonlayer}{quadcell}
-%      \draw [fill=afragreen,  preaction={fill, afragreen}, pattern=north west lines, pattern color=black] (47, 600) rectangle (117, 730);
-%	\end{pgfonlayer}
-%	\end{scope}
-%\end{tikzpicture}
-%The blowup complex.
-%\end{minipage}
-%{\color{blue}{Definition:}} \[ K^{U} = \bigcup_{J \in N(U)} U_J \times J \]
-%where $U_J = \bigcap_{j \in J} U_j$ and $N(U)$ is the nerve of $U$.
-%\pause
-%\begin{theorem}[Segal]
-%For any closed cover $U$, $K^U$ and $K$ are homotopy equivalent.
-%\end{theorem}
-%\pause \textbf{Recipe for a parallel \emph{homology} algorithm}
-%\end{frame}
-%\input{multicore_algorithm}
-%
-%\begin{frame}
-%\frametitle{Compute \emph{persistent} homology via subcomplexes}
-%So far computes homology, but, not persistent homology. 
-%\begin{figure}
-%\begin{minipage}[t]{.35\textwidth}
-%\coverfilt
-% \end{minipage}
-%\begin{minipage}{.2\textwidth}
-%\begin{tikzpicture}[y=1.0pt, x=0.8pt, yscale=-1, scale=.5]
-%      \path[draw=black,fill=afragreen, line width=3pt] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
-%\end{tikzpicture}
-%\vspace*{1cm}
-%\end{minipage}
-%\begin{minipage}[t]{.35\textwidth}
-%\cover
-%\end{minipage}
-%\end{figure}
-%%second row
-%\pause
-%\vspace{-1cm}
-%\begin{figure}
-%\begin{minipage}[t]{.35\textwidth}
-%\disjointunion
-% \end{minipage}
-%\begin{minipage}{.2\textwidth}
-%\begin{tikzpicture}[y=1.0pt, x=0.8pt, yscale=-1, scale=.5]
-%      \path[draw=black,fill=afragreen, line width=3pt] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
-%\end{tikzpicture}
-%\vspace*{1cm}
-%\end{minipage}
-%\begin{minipage}[t]{.35\textwidth}
-%\blowupcomplex
-%\end{minipage}
-%\end{figure}
-%\vspace{-1cm}
-%%second row
-%\pause
-%\begin{figure}
-%\begin{minipage}[t]{.35\textwidth}
-%\partialblowup
-%\end{minipage}
-%\begin{minipage}{.2\textwidth}
-%\begin{tikzpicture}[y=1.0pt, x=0.8pt, yscale=-1, scale=.5]
-%      \path[draw=black,fill=afragreen, line width=3pt] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
-%\end{tikzpicture}
-%\vspace*{1cm}
-%\end{minipage}
-%\begin{minipage}[t]{.4\textwidth}
-%\blowupcomplex
-%\end{minipage}
-%\end{figure}
-%\vspace{-1cm}
-%\begin{itemize}
-%\item[Issue:]<3-> Top filtration unrelated to a possible input filtration.
-%\item[Issue:]<4-> Direct use of bottom filtration is not parallel.
-%\item[Idea:]<5-> Re-examine the underlying spectral sequence
-%\end{itemize}
-%\end{frame}
-%\begin{frame}[fragile]
-%\frametitle{Mayer Vietoris Spectral Sequence}
-%\begin{figure}[h]
-%\centering
-%\begin{tikzcd}[scale=1,
-%execute at end scope={
-%\only<2>{
-%\begin{pgfonlayer}{edges}
-%\node[xshift=-1em,yshift=.5em] (c2) at (e20.north west) {\footnotesize$C_2\left(K^{U}\right)$};
-%\node[xshift=-1em,yshift=.5em] (c1) at (e10.north west) {\footnotesize$C_1\left(K^{U}\right)$};
-%\node[xshift=-1em,yshift=.5em] (c0) at (e00.north west) {\footnotesize$C_0\left(K^{U}\right)$};
-%\draw[opacity=.5,line width=7mm,line cap=round,color=afrablue] (e20.center) to (e02.center); 
-%\draw[opacity=.5,line width=7mm,line cap=round,color=afragreen] (e10.center) to (e01.center); 
-%\draw[opacity=.5,line width=7mm,line cap=round,color=afrapurple] (e00.center) to (e00.center);
-%\end{pgfonlayer} 
-%}}]
-%|[alias=e30]|  \vdots \arrow{d}{\partial_{K}}& |[alias=e31]| \vdots \arrow{d}{\partial_{K}}& |[alias=e32]| \vdots \arrow{d}{\partial_{K}} \\
-%|[alias=e20]|E^0_{2,0}  \arrow{d}{\partial_{K}}                     &  |[alias=e21]| E^0_{2,1} \arrow{l}{\partial_{N}} \arrow{d}{\partial_{K}}&|[alias=e22]|  E^0_{2,2} \arrow{l}{\partial_{N}}  \arrow{d}{\partial_{K}}& \ldots \arrow{l}{\partial_{N}} \\ 
-%|[alias=e10]|E^0_{1,0} \arrow{d}{\partial_{K}}                     & |[alias=e11]| E^0_{1,1} \arrow{l}{\partial_{N}}  \arrow{d}{\partial_{K}}& |[alias=e12]| E^0_{1,2} \arrow{l}{\partial_{N}} \arrow{d}{\partial_{K}}& \ldots \arrow{l}{\partial_{N}} \\
-%|[alias=e00]|E^0_{0,0}                                      & |[alias=e01]| E^0_{0,1} \arrow{l}{\partial_{N}}                & |[alias=e02]| E^0_{0,2} \arrow{l}{\partial_{N}}                   & \ldots \arrow{l}{\partial_{N}} 
-%\end{tikzcd}
-%\end{figure}
-%\[ E^0_{p,q} = \langle p\text{-chains in a }q\textrm{-way intersection} \rangle \]
-%\pause
-%We can construct the blowup \emph{chain complex} where $ C_d = \bigoplus_{p+q=d} E^0_{p,q}$
-%\pause
-%The first two differentials:
-%\[ d_0 = \partial_K \textrm{ and } d_1 = \partial_N \]
-%\pause 
-%Let's try an example!
-%\end{frame}
+When we have a pair of sets there is another short exact sequence:
+\begin{tikzcd}
+ C_*(U_0 \cap U_1) \hspace{1mm} \arrow{r}{x \mapsto (x,x)} & C_*(U_0) \bigoplus C_*(U_1) \hspace{1mm} \arrow{r}{ (x,y) \mapsto x-y} & \hspace{1mm} C_*(U_0 \bigcup U_1) = C_*(X) \\
+ \end{tikzcd}
+When you have intersections of 3 or more sets, this becomes the mayer vietoris spectral sequence, with the following initial data:
+\[ E^0_{p,q} = \langle p\text{-chains in a }q\textrm{-way intersection} \rangle \]
+\pause
+We will come back to this. For now, lets take advantage of this covering.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Compute homology via subcomplexes}
+\begin{minipage}{.35\textwidth}
+\begin{tikzpicture}[scale=.5, y=0.6pt, x=.75pt]
+     %row 1
+%     \node[font=\large] at (-50, 800) {$(K, U)$};
+     \draw[fill=afragreen, draw = black,  line width=2]  (47,800) circle (10pt);  
+     \draw[fill=afragreen, draw = black, line width=2]  (117,800) circle (10pt);   
+     \draw[fill=afragreen, draw = black, line width=2]  (190,800) circle (10pt); 
+     \draw[fill=afragreen, draw = black, line width=2]  (261,800) circle (10pt); 
+     \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (47,800) -- (117, 800);
+            \path[draw=black,fill=black,line width=2] (117,800) -- (190, 800);
+            \path[draw=black,fill=black,line width=2] (190,800) -- (261, 800);
+      \end{pgfonlayer}      
+      \draw[draw, color=afrablue, fill=none, line join=round,draw opacity=0.978,line width=2] (117, 800) ellipse (100 and 45) node[anchor=north, xshift=-.55in] {$U_0$};
+      \draw[draw, color=afrapurple, fill=none, line join=round,draw opacity=0.978,line width=2] (190, 800) ellipse (100 and 45) node[anchor=north, xshift=.6in] {$U_1$};
+    \end{tikzpicture}
+Space and Cover
+\end{minipage}
+\begin{minipage}{.2\textwidth}
+\begin{tikzpicture}[y=1.0pt, x=0.8pt, yscale=-1, scale=.5]
+      \path[draw=black,fill=afragreen, line width=3pt,transform canvas={xshift = 1cm}] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
+\end{tikzpicture}
+\vspace*{1cm}
+\end{minipage}
+\begin{minipage}{.4\textwidth}
+\begin{tikzpicture}[scale=.5, y=0.6pt, x=.75pt]
+    %disj 0
+    \begin{scope}[shift={(143,80)}]
+    \node[font=\large] at (300, 730) {$K^0 \times \Delta^{0}$};
+     \draw[draw, color=afrablue, fill=none, line join=round,draw opacity=0.978,line width=2] (117, 730) ellipse (100 and 45);
+     \draw[fill=afrablue, draw = black, line width=2]  (47,730) circle (10pt);  
+     \draw[fill=afrablue, draw = black, line width=2]  (117,730) circle (10pt);   
+     \draw[fill=afrablue, draw = black, line width=2]  (190,730) circle (10pt); 
+     \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (47,730) -- (117, 730);
+            \path[draw=black,fill=black,line width=2] (117,730) -- (190, 730);
+      \end{pgfonlayer}   
+      \end{scope}
+      %disj  1
+       \begin{scope}[shift={(0,0)}]
+        \node[font=\large] at (380, 680) {$K^1 \times \Delta^{1}$};
+       \draw[draw, color=afrapurple, fill=none, line join=round,draw opacity=0.978,line width=2] (190, 680) ellipse (100 and 45);
+     \draw[fill=afrapurple, draw = black, line width=2]  (117,680) circle (10pt);   
+     \draw[fill=afrapurple, draw = black, line width=2]  (190,680) circle (10pt); 
+      \draw[fill=afrapurple, draw = black, line width=2]  (261,680) circle (10pt); 
+         \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (117,680) -- (190, 680);
+            \path[draw=black,fill=black,line width=2] (190,680) -- (261, 680);
+      \end{pgfonlayer}   
+            \end{scope}
+      %blowup edges 
+      \begin{scope}[shift={(143,80)}]
+     \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (47,730) -- (47, 600);
+            \path[draw=black,fill=black,line width=2] (117,730) -- (117, 600);
+      \end{pgfonlayer}     
+          \node[font=\large] at (280, 665) {$K^{[1]} \times \Delta^{[1]}$};
+        \begin{pgfonlayer}{quadcell}
+      \draw [fill=afragreen,  preaction={fill, afragreen}, pattern=north west lines, pattern color=black] (47, 600) rectangle (117, 730);
+	\end{pgfonlayer}
+	\end{scope}
+\end{tikzpicture}
+The blowup complex.
+\end{minipage}
+{\color{blue}{Definition:}} \[ K^{U} = \bigcup_{J \in N(U)} U_J \times J \]
+where $U_J = \bigcap_{j \in J} U_j$ and $N(U)$ is the nerve of $U$.
+\pause
+\begin{theorem}[Segal]
+For any closed cover $U$, $K^U$ and $K$ are homotopy equivalent.
+\end{theorem}
+\pause \textbf{Recipe for a parallel \emph{homology} algorithm}
+\end{frame}
+\input{multicore_algorithm}
+
+\begin{frame}
+\frametitle{Compute \emph{persistent} homology via subcomplexes}
+So far computes homology, but, not persistent homology. 
+\begin{figure}
+\begin{minipage}[t]{.35\textwidth}
+\coverfilt
+ \end{minipage}
+\begin{minipage}{.2\textwidth}
+\begin{tikzpicture}[y=1.0pt, x=0.8pt, yscale=-1, scale=.5]
+      \path[draw=black,fill=afragreen, line width=3pt] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
+\end{tikzpicture}
+\vspace*{1cm}
+\end{minipage}
+\begin{minipage}[t]{.35\textwidth}
+\cover
+\end{minipage}
+\end{figure}
+%second row
+\pause
+\vspace{-1cm}
+\begin{figure}
+\begin{minipage}[t]{.35\textwidth}
+\disjointunion
+ \end{minipage}
+\begin{minipage}{.2\textwidth}
+\begin{tikzpicture}[y=1.0pt, x=0.8pt, yscale=-1, scale=.5]
+      \path[draw=black,fill=afragreen, line width=3pt] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
+\end{tikzpicture}
+\vspace*{1cm}
+\end{minipage}
+\begin{minipage}[t]{.35\textwidth}
+\blowupcomplex
+\end{minipage}
+\end{figure}
+\vspace{-1cm}
+%second row
+\pause
+\begin{figure}
+\begin{minipage}[t]{.35\textwidth}
+\partialblowup{.5}
+\end{minipage}
+\begin{minipage}{.2\textwidth}
+\begin{tikzpicture}[y=1.0pt, x=0.8pt, yscale=-1, scale=.5]
+      \path[draw=black,fill=afragreen, line width=3pt] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
+\end{tikzpicture}
+\vspace*{1cm}
+\end{minipage}
+\begin{minipage}[t]{.4\textwidth}
+\blowupcomplex
+\end{minipage}
+\end{figure}
+\vspace{-1cm}
+\begin{itemize}
+\item[Issue:]<3-> Top filtration unrelated to a possible input filtration.
+\item[Issue:]<4-> Direct use of bottom filtration is not parallel.
+\item[Luck:]<5->  Two filtrations are \emph{related}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Filtrations}
+%second row
+\begin{figure}
+\begin{minipage}[t]{.3\textwidth}
+\disjointunion
+ \end{minipage}
+\begin{minipage}{.2\textwidth}
+\begin{tikzpicture}[y=1.0pt, x=0.8pt, yscale=-1, scale=.4]
+      \path[draw=black,fill=afragreen, line width=3pt] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
+\end{tikzpicture}
+\vspace*{1cm}
+\end{minipage}
+\begin{minipage}[t]{.3\textwidth}
+\blowupcomplex
+\end{minipage}
+\end{figure}
+\vspace{-1cm}
+%second row
+\begin{figure}
+\begin{minipage}[t]{.3\textwidth}
+\partialblowup{.45}
+\end{minipage}
+\begin{minipage}{.2\textwidth}
+\begin{tikzpicture}[y=1.0pt, x=0.8pt, yscale=-1, scale=.4]
+      \path[draw=black,fill=afragreen, line width=3pt] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
+\end{tikzpicture}
+\vspace*{1cm}
+\end{minipage}
+\begin{minipage}[t]{.3\textwidth}
+\blowupcomplex
+\end{minipage}
+\end{figure}
+\vspace{-1cm}
+\begin{itemize}
+\item<1->[Recall:] $K^U$ has cells of the form $\sigma \times \tau$ with $\sigma \in K$ and $\tau \in N$
+\end{itemize}
+\noindent Difference is about ordering on cells:
+$\sigma \times \tau < \sigma' \times \tau'$ 
+\begin{itemize}
+\item<2->[Picture 1:]  $\tau < \tau'$  then breaking ties by comparing $\sigma < \sigma'$.
+\item<3->[Picture 2:]  $\sigma < \sigma'$  then breaking ties by comparing $\tau < \tau'$
+\end{itemize}
+\only<4->{
+\noindent \textbf{Important Observation:} If $\tau = \tau'$ then orders agree!  \\
+}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{revisit the blowup}
+\[  \left(%
+  \vcenter\bgroup\hbox\bgroup
+  \tikzpicture[
+   scale=.65,
+    x=.75\baselineskip,
+    y=.75\baselineskip,
+  ]
+    \mblock[afragreen](0,1)\partial_{1}(5,5)
+     \mblock[afrablue](5,-4)\partial_{2}{P_2}(5,5)
+     \mblock[afrapurple](10,-9)\partial_{3}{P_3}(5,5)
+      \mblock[afragreen](15,1)(2,5)
+      \mblock[afragreen](19,1)L_1(4,5)
+     % \mblock[afragreen](21,1)L_1(2,5) 
+     
+      \mblock[afrablue](15,-4)L_2(4,5)
+     %\mblock[afrablue](17,-4)L_2(2,5)
+     \mblock[afrablue](21,-4)(2,5)
+     
+     \mblock[afrapurple](17,-9)L_3(6,5)
+     % \mblock[afrapurple](19,-9)L_3(2,5) 
+      % \mblock[afrapurple](21,-9)L_3(2,5)
+       \mblock[gray](15,-13)I(8,4)       
+  \endtikzpicture
+  \egroup
+  \egroup \right)
+   \]
+   \begin{enumerate}
+   \item $\partial_{K^U}$ in block form, according to incorrect filtration.  
+   \item Reducing the matrix $\Pi' \cdot \partial_{K^U} \cdot \Pi$ , where $\Pi$ permutes between filtrations, results in the correct persistent homology.
+   \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{derive persistence with mayer vietoris.}
+\[  \left(%
+  \vcenter\bgroup\hbox\bgroup
+  \tikzpicture[
+   scale=.6,
+    x=.75\baselineskip,
+    y=.75\baselineskip,
+  ]
+    \mblock[afragreen](0,1)\temporal<2>{\partial_{1}}{R_1 \cdot D_1}{P_1}(5,5)
+     \mblock[afrablue](5,-4)\temporal<2>{\partial_{2}}{R_2 \cdot D_2}{P_2}(5,5)
+     \mblock[afrapurple](10,-9)\temporal<2>{\partial_{3}}{R_3 \cdot D_3}{P_3}(5,5)
+      \mblock[afragreen](15,1)(2,5)
+      \mblock[afragreen](19,1)\temporal<2>{L_1}{S_1L_1}{S_1L_1}(4,5)
+     % \mblock[afragreen](21,1)L_1(2,5) 
+     
+      \mblock[afrablue](15,-4)\temporal<2>{L_2}{S_2L_2}{S_2L_2}(4,5)
+     %\mblock[afrablue](17,-4)L_2(2,5)
+     \mblock[afrablue](21,-4)(2,5)
+     
+     \mblock[afrapurple](17,-9)\temporal<2>{L_3}{S_3L_3}{S_3L_3}(6,5)
+     % \mblock[afrapurple](19,-9)L_3(2,5) 
+      % \mblock[afrapurple](21,-9)L_3(2,5)
+       \mblock[gray](15,-13)I(8,4)       
+  \endtikzpicture
+  \egroup
+  \egroup \right)
+   \]
+   \only<1-4>{
+  All processors execute these operations with no communication!
+  \begin{enumerate}
+  \item[Step 1]<1-> Reduce all blocks (except I) of a fixed color independently. $\partial_i = R_i \cdot D_i$ 
+  \item[Step 2]<2-> Row reduce disjoint union $S^{-1}[R_i \mid L_i] \rightarrow [P_i \mid \tilde{L}_i]$ 
+  \item[Step 3]<3-> Perform all \textbf{valid} columns adds from $P_i$ into $\tilde{L}_i$ (perfect parallelism). 
+  \item[Sofar]<4-> Not finished yet, but, have not done anything wrong.
+  \end{enumerate}
+  }
+  \only<5->{
+  \begin{enumerate}
+  \item[Sparsity:]<5-> Now each $P_i$ has at most 1 nonzero per column. 
+  \item[Fill in:]<6-> If $D.U.$ has size $m$ and total size is $m+n$ then fill in is at most $O(mn)$ down from $O((m+n)^2)$
+  \item[Issue:]<7-> After permuting, naive reduction, could fill in entire matrix.
+  \item[Solution:]<8-> Row operations to the rescue!
+  \end{enumerate}
+  }
+\end{frame}
+
+\begin{frame}[fragile]{Cascade}
+All columns with pivot in row $m$ (after $\Pi$): \\
+\begin{centering}
+\begin{tikzpicture}[scale=.5, xshift=-20in,ampersand replacement = \&, baseline=(current bounding box.center)]% To center the matrix in the equation
+\begin{scope}[xshift=-8cm,scale=.75]
+\matrix[matrix of math nodes,execute at empty cell={\zr},%Node color and text "0"
+        every left delimiter/.style={xshift=0ex},%tighter delimiter spacing
+        every right delimiter/.style={xshift=-1ex},
+                left delimiter={(},right delimiter={)}
+                ] {
+  \nz \&  \&  \&  \&  \&  \&  \&  \& \\
+        \&   \nz \& \nz  \&  \&  \&  \&  \&  \& \\
+  \nz \& \&  \&   \&  \&  \&  \&  \& \\
+       \&  \nz \&  \nz \&  \&  \&  \&  \&  \& \\
+ \nz \& \&  \nz  \&  \&  \&  \&  \&  \& \\
+       \&   \nz  \&  \&   \& \& \&  \&  \&\\
+ \nz \&  \&  \nz \&  \&  \&  \&  \&  \& \\
+  \nz \&  \&  \nz \&  \& \&  \&  \&  \& \\
+\nz \& \nz \& \nz \&\nz \& \nz\&  \nz\&  \nz \& \nz \& \nz \\
+};
+ \end{scope}
+\begin{scope}[xshift=3.5cm,scale=.75]
+\only<2-3>{
+\matrix[matrix of math nodes,execute at empty cell={\nz},%Node color and text "0"
+        every left delimiter/.style={xshift=0ex},%tighter delimiter spacing
+        every right delimiter/.style={xshift=0ex},
+                left delimiter={(},right delimiter={)}
+                ] {
+  \nz \&  \nz \&  \nz \&  \&  \&  \&  \&  \& \\
+      \zr  \&   \nz \& \nz  \& \zr  \& \zr \& \zr \&  \zr \& \zr \& \zr \\
+  \nz \& \nz \& \nz \&   \&  \&  \&  \&  \& \\
+     \zr  \&  \nz \& \nz  \&  \zr  \& \zr \& \zr \&  \zr \& \zr \& \zr\\
+ \nz \& \nz \&\zr   \&  \&  \&  \&  \&  \& \\
+    \zr \&   \nz  \&  \zr \&  \zr  \& \zr \& \zr \&  \zr \& \zr \& \zr\\
+ \nz \& \nz \&\zr \&  \&  \&  \&  \&  \& \\
+  \nz \&\nz  \& \zr\&  \& \&  \&  \&  \& \\
+\nz \&\zr \&\zr \&  \zr  \& \zr \&\zr \& \zr  \&\zr  \&\zr  \\
+};
+}
+\only<4->{
+\matrix[matrix of math nodes,execute at empty cell={\zr},%Node color and text "0"
+        every left delimiter/.style={xshift=0ex},%tighter delimiter spacing
+        every right delimiter/.style={xshift=0ex},
+                left delimiter={(},right delimiter={)}
+                ] {
+   \&  \&  \&  \&  \&  \&  \&  \& \\
+        \&   \nz \& \nz  \&  \&  \&  \&  \&  \& \\
+   \& \&  \&   \&  \&  \&  \&  \& \\
+       \&  \nz \&  \nz \&  \&  \&  \&  \&  \& \\
+  \& \&  \nz  \&  \&  \&  \&  \&  \& \\
+       \&   \nz  \&  \&   \& \& \&  \&  \&\\
+  \&  \&  \nz \&  \&  \&  \&  \&  \& \\
+   \&  \&  \nz \&  \& \&  \&  \&  \& \\
+\nz \&\zr \&\zr \&  \zr  \& \zr \&\zr \& \zr  \&\zr  \&\zr  \\
+};
+}
+\end{scope}
+\begin{scope}[scale=.025,xshift=-65in]
+ \path[draw=black,fill=afragreen, line width=3pt] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
+ \end{scope}
+\end{tikzpicture}
+\end{centering}
+\begin{description}
+\item[Observation]<2-> row $m$ is $\alpha \cdot e_m$!
+\item[Fix]<3-> Remove fill by using row $m$ as a pivot row.
+\end{description}
+\end{frame}
+
+\begin{frame}
+\frametitle{theorem!}
+\begin{theorem}
+In $K$ is a complex with $m$ simplices covered by $U$ and $K^U$ has size $m+n$ then the mayer vietoris algorithm uses $O(mn^2)$ time and $O(mn)$ space.
+\end{theorem}
+\end{frame}
+
+\begin{frame}[fragile]{In practice}
+\pgfplotstableread{data/plt07895.dat}\pltCombustionMed
+\begin{figure}
+    \centering
+    \begin{tikzpicture}[scale=.5]
+    \begin{axis}[
+                    %ybar,
+                    %xtick=data,
+                    ymode=log,
+                    %log basis y=2,
+                    tick align=inside,
+                    %ymax=100,
+                    ymin=580,
+                    symbolic x coords={8,16,32,64,128,256,512},
+                    height=3in,
+                    width=\textwidth,
+                    xlabel={Number of processes},
+                    ylabel={Seconds},
+                ]
+        \addlegendentry{\hspace{.3in} Persistence ($256^2 \times 512$):}
+        \addplot+[] table[x=proc,y=time]
+                  {\pltCombustionMed};
+        \addlegendentry{\hspace{.3in}Perfect scaling:}
+        %\addplot+[dashed, red, mark=none] table[x=proc,y=perfect]
+        %          {\pltCombustionMed};
+        \addplot+[dashed, red, mark=none] coordinates
+                  {
+                      (8,  4096)
+                      (16, 2048)
+                      (32, 1024)
+                      (64, 512)
+                  };
+    \end{axis}
+    \end{tikzpicture}
+    \caption{Times to compute persistence diagram for the $256^2 \times 512$
+             combustion data set. Credit: Dmitry Morozov.}
+    \label{fig:times}
+\end{figure}
+\pause
+\vspace{-.75cm}
+\begin{itemize}
+\item An input of size of $1.3 \times 10^6$ while quite large, is still considerably smaller than what can be computed today.
+\item Interesting: memory usage is not closely tracking our space bound.
+\item Slowdown as number of processes increase matches our intuition, total size of intersection is getting much larger.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Future Directions}
+\begin{enumerate}
+\item There is still some room to improve the space complexity of this algorithm, for example, by reducing the factor $n$ in $O(mn)$
+\item Algorithm is top heavy, eventually a large matrix is on one machine. 
+\item We wanted to use M.V. to avoid this! Still some room for more cleverness here.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Mayer Vietoris Spectral Sequence}
+\begin{figure}[h]
+\centering
+\begin{tikzcd}[scale=1,
+execute at end scope={
+\only<2>{
+\begin{pgfonlayer}{edges}
+\node[xshift=-1em,yshift=.5em] (c2) at (e20.north west) {\footnotesize$C_2\left(K^{U}\right)$};
+\node[xshift=-1em,yshift=.5em] (c1) at (e10.north west) {\footnotesize$C_1\left(K^{U}\right)$};
+\node[xshift=-1em,yshift=.5em] (c0) at (e00.north west) {\footnotesize$C_0\left(K^{U}\right)$};
+\draw[opacity=.5,line width=7mm,line cap=round,color=afrablue] (e20.center) to (e02.center); 
+\draw[opacity=.5,line width=7mm,line cap=round,color=afragreen] (e10.center) to (e01.center); 
+\draw[opacity=.5,line width=7mm,line cap=round,color=afrapurple] (e00.center) to (e00.center);
+\end{pgfonlayer} 
+}}]
+|[alias=e30]|  \vdots \arrow{d}{\partial_{K}}& |[alias=e31]| \vdots \arrow{d}{\partial_{K}}& |[alias=e32]| \vdots \arrow{d}{\partial_{K}} \\
+|[alias=e20]|E^0_{2,0}  \arrow{d}{\partial_{K}}                     &  |[alias=e21]| E^0_{2,1} \arrow{l}{\partial_{N}} \arrow{d}{\partial_{K}}&|[alias=e22]|  E^0_{2,2} \arrow{l}{\partial_{N}}  \arrow{d}{\partial_{K}}& \ldots \arrow{l}{\partial_{N}} \\ 
+|[alias=e10]|E^0_{1,0} \arrow{d}{\partial_{K}}                     & |[alias=e11]| E^0_{1,1} \arrow{l}{\partial_{N}}  \arrow{d}{\partial_{K}}& |[alias=e12]| E^0_{1,2} \arrow{l}{\partial_{N}} \arrow{d}{\partial_{K}}& \ldots \arrow{l}{\partial_{N}} \\
+|[alias=e00]|E^0_{0,0}                                      & |[alias=e01]| E^0_{0,1} \arrow{l}{\partial_{N}}                & |[alias=e02]| E^0_{0,2} \arrow{l}{\partial_{N}}                   & \ldots \arrow{l}{\partial_{N}} 
+\end{tikzcd}
+\end{figure}
+\[ E^0_{p,q} = \langle p\text{-chains in a }q\textrm{-way intersection} \rangle \]
+\pause
+The first two differentials:
+\[ d_0 = \partial_K \textrm{ and } d_1 = \partial_N \]
+\pause 
+We can construct the blowup \emph{chain complex} where $ C_d = \bigoplus_{p+q=d} E^0_{p,q}$ with $\partial = d_0 + (-1)^q d_1$
+Let's try an example!
+\end{frame}
+
+
 \begin{frame}{Example: $S^1 \star S^1$}
 \[
 \begin{tikzpicture}[y=0.20pt, x=0.20pt, yscale=-1.000000, xscale=1.000000, inner sep=0pt, outer sep=0pt]
@@ -303,72 +564,4 @@ The $E_2$ page has terms of the following data:
 
 \[ H_0(S^1 \star S^1) \iso H_2(S^1 \star S^1) = 1 \]
 }
-\end{frame}
-\begin{frame}
-\frametitle{distributed mayer vietoris}
-\[  \left(%
-  \bgroup\hbox\bgroup
-  \tikzpicture[
-   scale=.75,
-    x=.75\baselineskip,
-    y=.75\baselineskip,
-  ]
-    \mblock[afragreen](0,1)\partial_{1}(5,5)
-     \mblock[afrablue](5,-4)\partial_{2}(5,5)
-     \mblock[afrapurple](10,-9)\partial_{3}(5,5)
-     \mblock[afragreen](15,1)(1,5)
-      \mblock[afrablue](15,-4)(1,5)
-     \mblock[afrablue](16,-4)(1,5)
-     \mblock[afrapurple](16,-9)(1,5)
-      \mblock[afrapurple](17,-9)(1,5)
-      \mblock[afragreen](17,1)(1,5)
-     \mblock[afragreen](18,1)(1,5)
-      \mblock[afrablue](18,-4)(1,5)
-       \mblock[afrapurple](18,-9)(1,5)
-       \mblock[gray](15,-13)(4,4)       
-  \endtikzpicture
-  \egroup
-  \egroup \right)
-\vfill
-   \]
-\end{frame}
-
-
-\begin{frame}
-\frametitle{main result}
-\textbf{Given} A filtration $F$ on a complex $K$ of size $m$ and cover with $p$ sets such that the resulting blowup complex has size $m+n$. \\
-\pause
-\textbf{Then} After reducing the disjoint union we can compute the persistent homology of $F$ using $O\left(mn^2\right)$  time and uses only $O(mn)$ space. \\
-\end{frame}
-
-\begin{frame}
-\frametitle{distributed mayer vietoris}
-\[  \left(%
-  \vcenter\bgroup\hbox\bgroup
-  \tikzpicture[
-    x=.75\baselineskip,
-    y=.75\baselineskip,
-  ]
-    \mblock[afragreen](0,1)\partial_{1}(3,3)
-     \mblock[afrablue](3,-2)\partial_{2}(3,3)
-     \mblock[afrapurple](6,-5)\partial_{3}(3,3)
-     \mblock[afragreen](9,1)(1,3)
-     \mblock[afrablue](9,-2)(1,3)
-     \mblock[afrablue](10,-2)(1,3)
-     \mblock[afrapurple](10,-5)(1,3)
-      \mblock[afrapurple](11,-5)(1,3)
-      \mblock[afragreen](11,1)(1,3)
-      \mblock[afragreen](12,1)(1,3)
-      \mblock[afrablue](12,-2)(1,3)
-       \mblock[afrapurple](12,-5)(1,3)
-       \mblock[gray](9,-9)(4,4)
-  \endtikzpicture
-  \egroup
-  \egroup \right) \]
-  \begin{enumerate}
-  \item[Step 1]<1-> Reduce all blocks of a fixed color independently. $\partial_iV_i \rightarrow R_i$
-  \item[Step 2]<2-> Row reduce disjoint union (and update other blocks) $S^{-1}[R_i \mid L_i] \rightarrow [P_i \mid \tilde{L}_i]$ $P_i$ has at most 1 nz per column.
-  \item[Step 3]<3-> Permute columns and rows into correct order $\pi_F[P_i \mid \tilde{L}_i] = T_i$
-  \item[Step 4]<4-> Do final reduction \emph{carefully} $T_i\tilde{V}_i = \tilde{R_i}$
-  \end{enumerate}
 \end{frame}

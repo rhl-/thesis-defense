@@ -12,6 +12,9 @@
 \newcommand*{\mblock}[1][block]{%
   \blockaux{#1}%
 }
+\newcommand*{\lblock}[1][block]{%
+  \blocklabel{#1}%
+}
 \def\blockaux#1(#2,#3)#4(#5,#6){%
   \draw[fill={#1}]
   let \p1=(#2,#3),
@@ -23,6 +26,19 @@
     (\p4) node {$#4$}
   ;%
 }
+
+\def\blocklabel#1(#2,#3)#4(#5,#6){%
+  \draw[fill={#1},draw=none]
+  let \p1=(#2,#3),
+      \p2=(#5,#6),
+      \p3=(#2+#5,#3+#6),
+      \p4=(#2+#5/2,#3+#6/2)
+  in
+    (\p1) rectangle (\p3)
+    (\p4) node {$#4$}
+  ;%
+}
+
 \newcommand*{\dblock}[1][block]{%
   \dblockaux{#1}%
 }
@@ -102,8 +118,8 @@
             \end{scope}
 \end{tikzpicture}
 }
-\newcommand{\partialblowup}{
-\begin{tikzpicture}[scale=.5, y=0.6pt, x=.75pt]
+\newcommand{\partialblowup}[1]{
+\begin{tikzpicture}[scale=#1, y=0.6pt, x=.75pt]
     %disj 0
     \begin{scope}[shift={(143,80)}]
    % \node[font=\large] at (300, 730) {$K^0 \times \Delta^{0}$};
@@ -178,7 +194,8 @@
 \input{data} %%annulus data
 \newcommand{\torusc}{10}
 \newcommand{\torusa}{5}
-
+\newcommand{\nz}{\node[circle,inner sep=1.25pt] {\times};}
+\newcommand{\zr}{ \node[black!20]{0};}
 \begin{document}
 
 \frame{\titlepage}
