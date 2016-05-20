@@ -199,41 +199,65 @@
 \begin{document}
 
 \frame{\titlepage}
+\input{motivation}
 \begin{frame}{The Agenda}
-Today we will present distributed algorithms for homology and persistent homology, via spectral sequences.
-\begin{minipage}{.65\textwidth}
+Today we will present distributed algorithms for homology and persistent homology, via spectral sequences. 
 \begin{itemize}
 \item {\color{gray}{Motivation}}
 \item \textbf{Background}
 \item Persistent Homology and a Spectral Sequence
 \item Homology from subcomplexes: Mayer Vietoris 
-\item A distributed persistence algorithm
+\item Mayer Vietoris \& Persistence
 \end{itemize}
-\end{minipage}
 \end{frame}
-
-
-%\input{motivation}
-%\input{background}
-%\input{spectral_sequence_filtration}
+\input{background}
+\begin{frame}{The Agenda}
+\begin{itemize}
+\item {\color{gray}{Motivation}}
+\item {\color{gray}{Background}}
+\item \textbf{Persistent Homology and a Spectral Sequence}
+\item Homology from subcomplexes: Mayer Vietoris 
+\item Mayer Vietoris \& Persistence
+\end{itemize}
+\end{frame}
+\input{spectral_sequence_filtration}
+\begin{frame}{The Agenda}
+\begin{itemize}
+\item {\color{gray}{Motivation}}
+\item {\color{gray}{Background}}
+\item {\color{gray}{Persistent Homology and a Spectral Sequence}}
+\item \textbf{Homology from subcomplexes: Mayer Vietoris}
+\item Mayer Vietoris \& Persistence
+\end{itemize}
+\end{frame}
+\input{parallel_mv}
+\begin{frame}{The Agenda}
+\begin{itemize}
+\item {\color{gray}{Motivation}}
+\item {\color{gray}{Background}}
+\item {\color{gray}{Persistent Homology and a Spectral Sequence}}
+\item {\color{gray}{Homology from subcomplexes: Mayer Vietoris }}
+\item \textbf{Mayer Vietoris \& Persistence}
+\end{itemize}
+\end{frame}
 \input{distributed_mv}
-%\begin{frame}
-%\frametitle{That's all she wrote!}
-%\begin{columns}
-%	\begin{column}{.4\textwidth}
-%	\begin{figure}
-%		\includegraphics[width=\textwidth]{bours_big.jpg}
-%		\caption{Lego Bour's Surface: By Andrew Lipson}
-%	\end{figure}
-%\end{column}
-%\begin{column}{.7\textwidth}
-%Thank you!  \\
-%Code available at: \\
-%\url{http://github.com/appliedtopology/ctl}  \\
-%\vspace{1cm}
-%Lego Art from: \\ 
-%\url{http://andrewlipson.com}
-%\end{column}
-%\end{columns}
-%\end{frame}
+\begin{frame}
+\frametitle{That's all she wrote!}
+\begin{columns}
+	\begin{column}{.4\textwidth}
+	\begin{figure}
+		\includegraphics[width=\textwidth]{mobiusmen.jpg}
+		\caption{Lego M\"obius Strip: By Andrew Lipson}
+	\end{figure}
+\end{column}
+\begin{column}{.7\textwidth}
+Thank you!  \\
+Code available at: \\
+\url{http://github.com/appliedtopology/ctl}  \\
+\vspace{1cm}
+Lego Art from: \\ 
+\url{http://andrewlipson.com}
+\end{column}
+\end{columns}
+\end{frame}
 \end{document}

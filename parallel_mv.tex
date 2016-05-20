@@ -1,0 +1,106 @@
+\begin{frame}[fragile]{Mayer Vietoris}
+\begin{figure}
+\begin{tikzpicture}[scale=.5, y=0.6pt, x=.75pt]
+     %row 1
+%     \node[font=\large] at (-50, 800) {$(K, U)$};
+     \draw[fill=afragreen, draw = black,  line width=2]  (47,800) circle (10pt);  
+     \draw[fill=afragreen, draw = black, line width=2]  (117,800) circle (10pt);   
+     \draw[fill=afragreen, draw = black, line width=2]  (190,800) circle (10pt); 
+     \draw[fill=afragreen, draw = black, line width=2]  (261,800) circle (10pt); 
+     \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (47,800) -- (117, 800);
+            \path[draw=black,fill=black,line width=2] (117,800) -- (190, 800);
+            \path[draw=black,fill=black,line width=2] (190,800) -- (261, 800);
+      \end{pgfonlayer}      
+      \draw[draw, color=afrablue, fill=none, line join=round,draw opacity=0.978,line width=2] (117, 800) ellipse (100 and 45) node[anchor=north, xshift=-.55in] {$U_0$};
+      \draw[draw, color=afrapurple, fill=none, line join=round,draw opacity=0.978,line width=2] (190, 800) ellipse (100 and 45) node[anchor=north, xshift=.6in] {$U_1$};
+    \end{tikzpicture}
+\caption{Space and Cover}
+\label{fig:space-n-cover}
+\end{figure}
+
+When we have a pair of sets there is another short exact sequence:
+\begin{tikzcd}
+ C_*(U_0 \cap U_1) \hspace{1mm} \arrow{r}{x \mapsto (x,x)} & C_*(U_0) \bigoplus C_*(U_1) \hspace{1mm} \arrow{r}{ (x,y) \mapsto x-y} & \hspace{1mm} C_*(U_0 \bigcup U_1) = C_*(X) \\
+ \end{tikzcd}
+When you have intersections of 3 or more sets, this becomes the mayer vietoris spectral sequence, with the following initial data:
+\[ E^0_{p,q} = \langle p\text{-chains in a }q\textrm{-way intersection} \rangle \]
+\pause
+We will come back to this. For now, lets take advantage of this covering.
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Compute homology via subcomplexes}
+\begin{minipage}{.35\textwidth}
+\begin{tikzpicture}[scale=.5, y=0.6pt, x=.75pt]
+     %row 1
+%     \node[font=\large] at (-50, 800) {$(K, U)$};
+     \draw[fill=afragreen, draw = black,  line width=2]  (47,800) circle (10pt);  
+     \draw[fill=afragreen, draw = black, line width=2]  (117,800) circle (10pt);   
+     \draw[fill=afragreen, draw = black, line width=2]  (190,800) circle (10pt); 
+     \draw[fill=afragreen, draw = black, line width=2]  (261,800) circle (10pt); 
+     \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (47,800) -- (117, 800);
+            \path[draw=black,fill=black,line width=2] (117,800) -- (190, 800);
+            \path[draw=black,fill=black,line width=2] (190,800) -- (261, 800);
+      \end{pgfonlayer}      
+      \draw[draw, color=afrablue, fill=none, line join=round,draw opacity=0.978,line width=2] (117, 800) ellipse (100 and 45) node[anchor=north, xshift=-.55in] {$U_0$};
+      \draw[draw, color=afrapurple, fill=none, line join=round,draw opacity=0.978,line width=2] (190, 800) ellipse (100 and 45) node[anchor=north, xshift=.6in] {$U_1$};
+    \end{tikzpicture}
+Space and Cover
+\end{minipage}
+\begin{minipage}{.2\textwidth}
+\begin{tikzpicture}[y=1.0pt, x=0.8pt, yscale=-1, scale=.5]
+      \path[draw=black,fill=afragreen, line width=3pt,transform canvas={xshift = 1cm}] (2.57,14.56) -- (1.9450, 33.7380) -- (63.8200,33.5230) -- (63.8200,47.7970) -- (107.5700,25.4260) -- (64.4450,3.0550) -- (63.8200,18.8240) -- (2.5700,14.5620);
+\end{tikzpicture}
+\vspace*{1cm}
+\end{minipage}
+\begin{minipage}{.4\textwidth}
+\begin{tikzpicture}[scale=.5, y=0.6pt, x=.75pt]
+    %disj 0
+    \begin{scope}[shift={(143,80)}]
+    \node[font=\large] at (300, 730) {$K^0 \times \Delta^{0}$};
+     \draw[draw, color=afrablue, fill=none, line join=round,draw opacity=0.978,line width=2] (117, 730) ellipse (100 and 45);
+     \draw[fill=afrablue, draw = black, line width=2]  (47,730) circle (10pt);  
+     \draw[fill=afrablue, draw = black, line width=2]  (117,730) circle (10pt);   
+     \draw[fill=afrablue, draw = black, line width=2]  (190,730) circle (10pt); 
+     \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (47,730) -- (117, 730);
+            \path[draw=black,fill=black,line width=2] (117,730) -- (190, 730);
+      \end{pgfonlayer}   
+      \end{scope}
+      %disj  1
+       \begin{scope}[shift={(0,0)}]
+        \node[font=\large] at (380, 680) {$K^1 \times \Delta^{1}$};
+       \draw[draw, color=afrapurple, fill=none, line join=round,draw opacity=0.978,line width=2] (190, 680) ellipse (100 and 45);
+     \draw[fill=afrapurple, draw = black, line width=2]  (117,680) circle (10pt);   
+     \draw[fill=afrapurple, draw = black, line width=2]  (190,680) circle (10pt); 
+      \draw[fill=afrapurple, draw = black, line width=2]  (261,680) circle (10pt); 
+         \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (117,680) -- (190, 680);
+            \path[draw=black,fill=black,line width=2] (190,680) -- (261, 680);
+      \end{pgfonlayer}   
+            \end{scope}
+      %blowup edges 
+      \begin{scope}[shift={(143,80)}]
+     \begin{pgfonlayer}{edges}
+            \path[draw=black,fill=black,line width=2] (47,730) -- (47, 600);
+            \path[draw=black,fill=black,line width=2] (117,730) -- (117, 600);
+      \end{pgfonlayer}     
+          \node[font=\large] at (280, 665) {$K^{[1]} \times \Delta^{[1]}$};
+        \begin{pgfonlayer}{quadcell}
+      \draw [fill=afragreen,  preaction={fill, afragreen}, pattern=north west lines, pattern color=black] (47, 600) rectangle (117, 730);
+	\end{pgfonlayer}
+	\end{scope}
+\end{tikzpicture}
+The blowup complex.
+\end{minipage}
+{\color{blue}{Definition:}} \[ K^{U} = \bigcup_{J \in N(U)} U_J \times J \]
+where $U_J = \bigcap_{j \in J} U_j$ and $N(U)$ is the nerve of $U$.
+\pause
+\begin{theorem}[Segal]
+For any closed cover $U$, $K^U$ and $K$ are homotopy equivalent.
+\end{theorem}
+\pause \textbf{Recipe for a parallel \emph{homology} algorithm}
+\end{frame}
+\input{multicore_algorithm}
